@@ -1,0 +1,9 @@
+<div id="home">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h3 ng-show="search">Search: {{search}}</h3>
+        <div class="row content">
+            <h4 class="nullMessage" ng-show="noContent">Sorry. We couldn't find any bootcamps for you!</h4>
+            <product-thumbnail ng-repeat="productEntry in products track by $index | orderBy: sortMethod" ng-hide="productEntry.seller || productEntry.inventory === 0" product="productEntry"></product-thumbnail>
+        </div>
+    </div>
+</div>

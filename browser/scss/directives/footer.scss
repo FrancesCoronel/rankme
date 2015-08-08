@@ -1,0 +1,14 @@
+#footer {
+    width: 100%;
+    background-color: white
+    a {
+        color: #ACBAD2;
+    }
+    a:focus,
+    a:hover {
+        color: #5898f1;
+        text-decoration: none;
+    }
+    padding-top: 5%;
+    padding-bottom: 3%;
+}

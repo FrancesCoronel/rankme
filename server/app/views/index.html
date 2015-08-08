@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base href="/" />
+    <meta charset="utf-8">
+    <meta name="keywords" content="stackstore, robots, robopocalypse">
+    <meta name="description" content="Our stackstore project.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Rank Me</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Material icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Angular Material  Design -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
+    <!-- Material Design Lite -->
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue_grey-red.min.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Bootstrap Social Icons -->
+    <link rel="stylesheet" type="text/css" href="/bootstrap-social/bootstrap-social.css" />
+    <!-- Normalize -->
+    <link rel="stylesheet" type="text/css" href="/normalize.css/normalize.css" />
+    <!-- Our compiled CSS -->
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <!-- lodash -->
+    <script src="/lodash/index.js"></script>
+    <!--[if lt IE 9]>
+    <script src="bower_components/html5shiv/dist/html5shiv.js"></script>
+    <![endif]-->
+    <!-- Angular Material Dependencies -->
+    <script type="text/javascript" src="/angular/angular.js"></script>
+    <script type="text/javascript" src="/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src="/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="/angular-bootstrap/ui-bootstrap.js"></script>
+    <!-- Material Design JS -->
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script text="text/javascript" src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Angular UI Router JS -->
+    <script type="text/javascript" src="/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- Angular Carousel -->
+    <link href="angular-carousel/dist/angular-carousel.min.css" rel="stylesheet" type="text/css" />
+    <script src="angular-touch/angular-touch.min.js"></script>
+    <script src="angular-carousel/dist/angular-carousel.min.js"></script>
+    <!-- Socket IO -->
+    <script type="text/javascript" src="/socket.io-client/socket.io.js"></script>
+    <!-- Our compiled JS -->
+    <script type="text/javascript" src="/main.js"></script>
+</head>
+
+<body ng-app="Robopocalypse">
+    <navbar></navbar>
+    <div class="container mainContainer">
+        <div class="row marginBottom">
+            <div ui-view></div>
+        </div>
+    </div>
+    <robo-footer></robo-footer>
+</body>
+
+</html>

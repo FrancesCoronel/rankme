@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 centerText">
+        <div class="row marginAuto">
+            <div class="col-sm-12 col-md-2 col-lg-2">
+                <h1>Welcome.</h1>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-2">
+                <a class="mdl-navigation__link btn btn-lg btn-primary btn-block btn-standard marginAuto" ng-click="show('users')"><i class="mdl-color-text--blue-grey-400 material-icons">people</i>Users</a>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-2">
+                <a class="mdl-navigation__link btn btn-lg btn-primary btn-block btn-standard marginAuto" ng-click="show('orders')"><i class="mdl-color-text--blue-grey-400 material-icons">shopping_cart</i>Orders</a>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-2">
+                <a class="mdl-navigation__link btn btn-lg btn-primary btn-block btn-standard marginAuto" ng-click="show('products')"><i class="mdl-color-text--blue-grey-400 material-icons">local_offer</i>Products</a>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-2">
+                <a class="mdl-navigation__link btn btn-lg btn-primary btn-block btn-standard marginAuto" ng-click="show('categories')"><i class="mdl-color-text--blue-grey-400 material-icons">bookmark</i>Categories</a>
+            </div>
+            <div class="col-sm-12 col-md-2 col-lg-2">
+                <a class="mdl-navigation__link btn btn-lg btn-primary btn-block btn-standard marginAuto" ng-click="show('reviews')"><i class="mdl-color-text--blue-grey-400 material-icons">rate_review</i>Reviews</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row marginTop">
+    <div class="col-sm-12 col-md-12 col-lg-12 centerText">
+        <admin-users ng-show="'users' === activeTab"></admin-users>
+        <admin-products ng-show="'products' === activeTab" categories="theCategories"></admin-products>
+        <admin-orders ng-show="'orders' === activeTab"></admin-orders>
+        <admin-categories ng-show="'categories' === activeTab" categories="theCategories"></admin-categories>
+        <admin-reviews ng-show="'reviews' === activeTab"></admin-reviews>
+    </div>
+</div>

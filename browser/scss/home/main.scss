@@ -1,0 +1,50 @@
+@font-face {
+    font-family: ProximaNova;
+    src: url("/fonts/proxima_nova/proxima_nova_reg-webfont.ttf");
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    position: relative;
+    background: white;
+    padding-top: 1%;
+    font-family: "ProximaNova";
+}
+
+a {
+    color: #ACBAD2;
+    :hover {
+        cursor: url(http://cur.cursors-4u.net/others/oth-7/oth639.cur), progress !important;
+        color: #5898f1;
+    }
+}
+
+.btn:hover {
+    cursor: url(http://cur.cursors-4u.net/others/oth-7/oth639.cur), progress !important;
+    border: 1px solid #5898f1;
+    outline: 0;
+    color: white;
+    background-color: #5898f1;
+}
+
+.initialFontSize {
+    font-size: initial;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.container.mainContainer {
+    margin-top: 1%;
+}
+
+::selection {
+    background: white;
+    color: #5898f1;
+}

@@ -1,0 +1,63 @@
+<div class="mdl-card mdl-shadow--3dp centerText marginBottom" style="padding:3%; width:inherit;">
+    <form>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="row marginTop marginBottom">
+                <img class="img-responsive marginAuto" ng-src="{{theUser.photo}}" />
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="row marginTop marginBottom">
+                <md-input-container class="lineItem" flex>
+                    <label>ID</label>
+                    <input ng-model="theUser._id" class="lineItem" disabled>
+                </md-input-container>
+            </div>
+            <div class="row marginTop marginBottom">
+                <md-input-container class="lineItem" flex>
+                    <label>First Name</label>
+                    <input ng-model="theUser.name.first" class="lineItem">
+                </md-input-container>
+            </div>
+            <div class="row marginTop marginBottom">
+                <md-input-container class="lineItem" flex>
+                    <label>Last Name</label>
+                    <input ng-model="theUser.name.last" class="lineItem">
+                </md-input-container>
+            </div>
+            <div class="row marginTop marginBottom">
+<!--                 <md-input-container class="lineItem" flex>
+                    <label>Role</label>
+                    <input ng-model="theUser.roles[0]" class="lineItem">
+                </md-input-container> -->
+                <md-select placeholder="Role" ng-model="theUser.roles[0]">
+                    <md-option ng-repeat="role in roles" value="{{role}}">{{role}}</md-option>
+                </md-select>
+            </div>
+            <div class="row marginTop marginBottom">
+                <md-input-container class="lineItem" flex>
+                    <label>Email</label>
+                    <input ng-model="theUser.email" class="lineItem">
+                </md-input-container>
+            </div>
+            <div class="row marginTop marginBottom">
+                <a class="btn-primary btn-lg btn-standard" ng-click="update()"><i class="fa fa-pencil"></i> Update</a>
+            </div>
+            <div class="row marginTop marginBottom">
+                <a class="btn-primary btn-lg btn-standard" ng-click="delete()"><i class="fa fa-times"></i> Delete</a>
+            </div>
+        </div>
+    </form>
+    <md-button class="md-raised md-warn" ng-if="theUser.roles[0] === 'User' && !!theUser.storeName" ng-click="makeMerchant()">New Merchant Requested (Click Here)</md-button>
+    <div ng-if="theUser.roles[0] === 'Merchant'">
+        <h2>User Store</h2>
+        <hr>
+    </div>
+    <div ng-show="theUser.storeName">
+        <p><b>Store Name:</b> {{theUser.storeName}}</p>
+        <p><b>Store URL:</b> {{theUser.storeURL}}</p>
+        <p>
+        <b>Store Description:</b>
+            {{theUser.storeDesc}}
+        </p>
+    </div>
+</div>

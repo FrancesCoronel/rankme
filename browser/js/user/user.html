@@ -1,0 +1,61 @@
+<div class="row marginAuto">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="thumbnail mdl-card mdl-shadow--3dp right-caption" style="padding:2%; width: 100%">
+            <div class="col-sm-12 col-lg-6 col-md-6">
+                <img style="width: 100%" class="img-responsive" ng-src="{{ user.photo }}">
+            </div>
+            <div class="col-sm-12 col-lg-6 col-md-6">
+                <div class="caption">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h1>Hey {{user.name.first}} {{user.name.last}}!</h1>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 marginTop">
+                        <md-input-container class="notLineItem" flex>
+                            <label>
+                                <h2>Image URL</h2></label>
+                            <input ng-model="user.photo" placeholder="{{user.photo}}" class="lineItem" enabled>
+                        </md-input-container>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <md-input-container class="notLineItem" flex>
+                            <label>
+                                <h2>Email</h2></label>
+                            <input placeholder="{{user.email}}" ng-model="user.email" class="lineItem" enabled>
+                        </md-input-container>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <md-input-container class="notLineItem" flex>
+                            <label>
+                                <h2>Password</h2></label>
+                            <input ng-model="user.password" class="lineItem" enabled>
+                        </md-input-container>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 centerText">
+                        <a class="btn btn-primary btn-lg btn-standard" ng-click="updateProfile()" type="submit" style="margin-top: 1%"><i class="fa fa-pencil"></i> Update Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row marginAuto">
+    <div class="col-sm-12 col-lg-6 col-md-6">
+        <div class="thumbnail mdl-card mdl-shadow--3dp" style="padding:10%;">
+            <div class="centerText">
+                <h1><i class="fa fa-weixin fa-2x"></i> Reviews</h1>
+            </div>
+            <product-review ng-repeat="review in reviews" thereview="review" userpage="true"></product-review>
+        </div>
+    </div>
+    <div class="col-sm-12 col-lg-6 col-md-6">
+        <div class="thumbnail mdl-card mdl-shadow--3dp" style="padding:10%;">
+            <div class="centerText">
+                <h1><i class="fa fa-cart-arrow-down fa-2x"></i></i> Orders</h1>
+            </div>
+            <fieldset ng-repeat="order in orders">
+                <user-order-line order="order">
+                </user-order-line>
+            </fieldset>
+        </div>
+    </div>
+</div>

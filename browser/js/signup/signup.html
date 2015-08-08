@@ -1,0 +1,76 @@
+<div class="container noPadding centerText">
+    <div class="specialRow marginTop marginBottom">
+        <form class="form-signin" name="registrationForm" ng-submit="createUser(credentials)">
+            <!-- Title -->
+            <h1 class="form-signin-heading centerText">Sign Up</h1>
+            <div class="row">
+                <!-- First Name -->
+                <md-content class="col-lg-6 col-md-12 col-sm-12">
+                    <div layout layout-sm="column">
+                        <md-input-container flex>
+                            <label>
+                                <h1>first name</h1></label>
+                            <input type="text" name="firstName" class="form-control mdl-textfield__input" ng-model="credentials.name.first" required autofocus>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <!-- Last Name -->
+                <md-content class="col-lg-6 col-md-12 col-sm-12">
+                    <div layout layout-sm="column">
+                        <md-input-container flex>
+                            <label>
+                                <h1>last name</h1></label>
+                            <input type="text" name="lastName" ng-model="credentials.name.last" class="form-control mdl-textfield__input" required autofocus>
+                            <p ng-show="registrationForm.lastName.$invalid" class="help-block">Your last name is required.</p>
+                        </md-input-container>
+                    </div>
+                </md-content>
+            </div>
+            <div class="row">
+                <!-- Email -->
+                <md-content class="col-lg-6 col-md-12 col-sm-12">
+                    <div layout layout-sm="column">
+                        <md-input-container flex>
+                            <label>
+                                <h1>email</h1></label>
+                            <input type="email" name="email" class="form-control mdl-textfield__input" ng-model="credentials.email" required required autofocus>
+                            <p ng-show="registrationForm.email.$invalid" class="help-block">Enter a valid email.</p>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <!-- Password -->
+                <md-content class="col-lg-6 col-md-12 col-sm-12">
+                    <div layout layout-sm="column">
+                        <md-input-container flex>
+                            <label>
+                                <h1>password</h1></label>
+                            <input type="password" name="password" class="form-control mdl-textfield__input" ng-model="credentials.password" ng-minlength="8" required autofocus>
+                            <p ng-show="registrationForm.password.$error.minlength" class="help-block">Your password must be at least 8 characters.</p>
+                            <p ng-show="registrationForm.password.$error.required" class="help-block">Your password is required.</p>
+                        </md-input-container>
+                    </div>
+                </md-content>
+            </div>
+            <!-- Buttons -->
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-lg btn-primary btn-block btn-standard" type="submit"><i class="fa fa-external-link"></i> Sign Up</button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-lg btn-primary btn-block btn-standard" ui-sref="login"><i class="fa fa-sign-in"></i> Already have an account?</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <auth-button provider-name="Google"></auth-button>
+                </div>
+                <div class="col-md-4">
+                    <auth-button provider-name="Twitter"></auth-button>
+                </div>
+                <div class="col-md-4">
+                    <auth-button provider-name="Facebook"></auth-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

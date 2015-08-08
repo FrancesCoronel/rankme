@@ -1,0 +1,49 @@
+<div class="container noPadding centerText">
+    <div class="specialRow marginTop marginBottom">
+        <form class="form-signin" name="loginForm" ng-submit="loginForm.$valid; sendLogin(login)">
+            <h1 class="form-signin-heading centerText">Login</h1>
+            <div class="row">
+                <!-- Email -->
+                <md-content class="col-lg-6 col-md-12 col-sm-12">
+                    <div layout layout-sm="column">
+                        <md-input-container flex>
+                            <label>
+                                <h1>email</h1></label>
+                            <input type="email" id="email" class="form-control" ng-model="login.email" id="email" required>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <!-- Password -->
+                <md-content class="col-lg-6 col-md-12 col-sm-12">
+                    <div layout layout-sm="column">
+                        <md-input-container flex>
+                            <label>
+                                <h1>password</h1></label>
+                            <input type="password" ng-model="login.password" class="form-control mdl-textfield__input" id="login-password" required>
+                        </md-input-container>
+                    </div>
+                </md-content>
+            </div>
+            <!-- Buttons -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <button class="btn btn-lg btn-primary btn-block btn-standard" type="submit"><i class="fa fa-sign-in"></i> Login</button>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <button class="btn btn-lg btn-primary btn-block btn-standard" ng-click="forgot(login)"><i class="fa fa-question-circle"></i> Forgot your password?</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <auth-button provider-name="Google"></auth-button>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <auth-button provider-name="Twitter"></auth-button>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <auth-button provider-name="Facebook"></auth-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

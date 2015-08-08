@@ -1,0 +1,2 @@
+<a target="_self" href="/auth/{{ providerName | lowercase }}" class="btn btn-lg btn-primary btn-block btn-social btn-{{ providerName | lowercase }}" ng-show="$parent.location.path() === '/signup'"><i class="fa fa-{{ providerName | lowercase }}"></i>Sign up with {{ providerName }}</a>
+<a target="_self" href="/auth/{{ providerName | lowercase }}" class="btn btn-lg btn-primary btn-block btn-social btn-{{ providerName | lowercase }}" ng-show="$parent.location.path() === '/login'"><i class="fa fa-{{ providerName | lowercase }}"></i> Login with {{ providerName }}</button></a>
