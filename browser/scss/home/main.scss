@@ -37,14 +37,49 @@ a {
 }
 
 .centerText {
-    text-align: center;
+    text-align: -webkit-center;
 }
 
 .container.mainContainer {
     margin-top: 1%;
 }
 
+.container {
+    position: relative;
+}
+
 ::selection {
     background: white;
     color: #5898f1;
+}
+
+.marginTop {
+    margin-top: 5%;
+}
+
+.marginBottom {
+    margin-bottom: 5%;
+}
+
+.marginTopBottom {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.morePadding {
+    padding: 5%;
+}
+
+.valign-middle {
+    display: table;
+}
+
+.valign-middle .columns {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.valign-middle .columns,
+.valign-middle [class*="column"] + [class*="column"]:last-child {
+    float: none;
 }

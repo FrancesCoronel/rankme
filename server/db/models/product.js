@@ -82,6 +82,17 @@ var schema = new mongoose.Schema({
             type: Number
         }
     },
+    switchup: {
+        url: {
+            type: String
+        },
+        num: {
+            type: Number
+        },
+        avg: {
+            type: Number
+        },
+    },
     techendo: {
         url: {
             type: String
@@ -97,11 +108,11 @@ var schema = new mongoose.Schema({
         }
     },
     twitter: {
-        followers: {
-            type: Number
-        },
         url: {
             type: String
+        },
+        followers: {
+            type: Number
         }
     },
     yelp: {

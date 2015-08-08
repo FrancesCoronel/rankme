@@ -20,13 +20,24 @@ app.controller('HomeCtrl', function($scope, $state, Products) {
     } else {
         Products.getAll().then(assignData);
     }
-    // $scope.product = Products.getOne();
-    $scope.sortBy = function(chosenMethod) {
-        if (chosenMethod === $scope.sortMethod) {
-            $scope.sortMethod = "-" + chosenMethod;
+
+    var sortMethod = "title";
+
+    Products.getAll()
+        .then(function(data) {
+            $scope.products = data;
+        })
+        .catch(function(err) {
+            console.log('error', err);
+        });
+
+    $scope.sortBy = function(predicate) {
+        if (predicate === $scope.sortMethod) {
+            $scope.sortMethod = "-" + predicate;
         } else {
-            $scope.sortMethod = chosenMethod;
+            $scope.sortMethod = predicate;
         }
+        console.log($scope.sortMethod);
     };
 });
 
@@ -38,4 +49,14 @@ app.directive("homePage", function() {
             search: "=search"
         }
     };
+});
+
+app.config(function($stateProvider) {
+
+    $stateProvider.state('browse', {
+        url: '/browse',
+        templateUrl: 'js/browse/browse.html',
+        controller: 'BrowseCtrl'
+    });
+
 });

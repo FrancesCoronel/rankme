@@ -4,7 +4,6 @@
             <div class="row marginTop marginBottom">
                 <div ng-repeat="photo in theProduct.photos track by $index">
                     <img class="adminProductThumb" ng-src="{{photo}}">
-                    <!-- <i class="icon-remove-sign" ng-click="removeImg($index)"></i> -->
                     <i class="fa fa-times-circle fa-2x" ng-click="removeImg($index)"></i>
                 </div>
             </div>

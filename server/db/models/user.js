@@ -20,16 +20,6 @@ var schema = new mongoose.Schema({
         token: String,
         tokenSecret: String
     },
-    facebook: {
-        id: String,
-        accessToken: String,
-        refreshToken: String
-    },
-    google: {
-        id: String,
-        accessToken: String,
-        refreshToken: String
-    },
     name: {
         first: {
             type: String,
@@ -46,13 +36,9 @@ var schema = new mongoose.Schema({
     },
     roles: [{
         type: String,
-        enum: ['User', 'Admin', 'Merchant'],
+        enum: ['User', 'Admin'],
         default: 'User'
     }],
-    storeName: String,
-    storeDesc: String,
-    storeURL: String
-
 });
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations
@@ -89,10 +75,12 @@ schema.virtual("reset_link").get(function() {
     return link;
 });
 
-schema.statics.resetPass = function (query) {
-    return this.findOne({email: query.email}).exec().then(function(user){
+schema.statics.resetPass = function(query) {
+    return this.findOne({
+        email: query.email
+    }).exec().then(function(user) {
         console.log(Date.now() < query.expirationTime && encryptPassword(user.password, user.salt) === query.token);
-        if(Date.now() < query.expirationTime && encryptPassword(user.password, user.salt) === query.token){
+        if (Date.now() < query.expirationTime && encryptPassword(user.password, user.salt) === query.token) {
             user.password = query.newPassword;
             return user.save();
         }

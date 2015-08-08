@@ -8,8 +8,8 @@
     <div class="mdl-card mdl-shadow--2dp productCard">
         <div class="mdl-card__title mdl-card--expand"></div>
         <div class="mdl-card__supporting-text">
-            <div class="row">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{theProduct.homePage}}">
+            <div class="row valign-middle">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{theProduct.homePage}}" target="_blank">
                     <h2 class="mdl-card__title-text">{{theProduct.title}}</h2>
                 </a>
             </div>
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <br>
-            <div class="row">
+            <div class="row valign-middle">
                 <p>{{theProduct.description}}</p>
             </div>
         </div>
@@ -36,11 +36,12 @@
     </div>
     <div class="mdl-card mdl-shadow--2dp detailsCard" ng-init="seeBootcamp = false" ng-show="seeBootcamp">
         <div class="mdl-card__supporting-text">
-            <div class="row marginBottom">
-                <div class="col-sm-12 col-md-3 col-lg-3">
+            <hr>
+            <div class="row valign-middle">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <a href="{{theProduct.courseReport.url}}" target="_blank"><img src="images/coursereport.png" class="img-responsive"></a>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <div class="row">
                         <p><b>{{theProduct.courseReport.avg}}</b> out of 5</p>
                     </div>
@@ -48,10 +49,10 @@
                         <p><b>{{theProduct.courseReport.num}}</b> reviews</p>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <a href="{{theProduct.facebook.url}}" target="_blank"><img src="images/facebook.png" class="img-responsive"></a>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <div class="row">
                         <p><b>{{theProduct.facebook.avg}}</b> out of 5</p>
                     </div>
@@ -63,11 +64,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row marginBottom">
-                <div class="col-sm-12 col-md-3 col-lg-3">
+            <hr>
+            <div class="row marginBottom valign-middle">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <a href="{{theProduct.googlePlus.url}}" target="_blank"><img src="images/googleplus.png" class="img-responsive"></a>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <div class="row">
                         <p><b>{{theProduct.googlePlus.avg}}</b> out of 5</p>
                     </div>
@@ -78,10 +80,10 @@
                         <p><b>{{theProduct.googlePlus.followers}}</b> reviews</p>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <a href="{{theProduct.quora.url}}" target="_blank"><img src="images/quora.png" class="img-responsive"></a>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <div class="row">
                         <p><b>{{theProduct.quora.avg}}</b> out of 5</p>
                     </div>
@@ -93,11 +95,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row marginBottom">
-                <div class="col-sm-12 col-md-3 col-lg-3">
-                    <a href="{{theProduct.switchup.url}}" target="_blank"><img src="images/swithup.png" class="img-responsive"></a>
+            <hr>
+            <div class="row marginBottom valign-middle">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
+                    <a href="{{theProduct.switchup.url}}" target="_blank"><img src="images/switchup.png" class="img-responsive"></a>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <div class="row">
                         <p><b>{{theProduct.switchup.avg}}</b> out of 5</p>
                     </div>
@@ -105,28 +108,37 @@
                         <p><b>{{theProduct.switchup.num}}</b> reviews</p>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
+                    <a href="{{theProduct.techendo.url}}" target="_blank"><img src="images/techendo.png" class="img-responsive"></a>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <div class="row">
-                        {{theProduct.techendo.positive}} positive | {{theProduct.techendo.negative}} negative
+                        <div class="col-md-6">
+                            <p><b>{{theProduct.techendo.positive}}</b> <i class="fa fa-smile-o"></i></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><b>{{theProduct.techendo.negative}}</b> <i class="fa fa-frown-o"></i></p>
+                        </div>
                     </div>
                     <div class="row">
                         <p><b>{{theProduct.techendo.num}}</b> reviews</p>
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="row marginBottom">
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <a href="{{theProduct.twitter.url}}" target="_blank"><img src="images/twitter.png" class="img-responsive"></a>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <div class="row marginTop">
                         <p><b>{{theProduct.twitter.followers}}</b> followers</p>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <a href="{{theProduct.yelp.url}}" target="_blank"><img src="images/yelp.png" class="img-responsive"></a>
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <div class="row">
                         <p><b>{{theProduct.yelp.avg}}</b> out of 5</p>
                     </div>

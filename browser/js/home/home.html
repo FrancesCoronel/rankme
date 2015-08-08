@@ -1,9 +1,26 @@
 <div id="home">
     <div class="col-sm-12 col-md-12 col-lg-12">
         <h3 ng-show="search">Search: {{search}}</h3>
+        <div class="row">
+            <div class="col-md-3">
+                <h1>Sort By</h1>
+            </div>
+            <div class="col-md-3">
+                <span ng-click="sortBy('title')">title</span>
+            </div>
+            <div class="col-md-3">
+                <span ng-click="sortBy('average')">average rating</span> </p>
+            </div>
+            <div class="col-md-3">
+                <span ng-click="sortBy('reviews')">number of reviews</span>
+            </div>
+            <div class="col-md-3">
+                <span ng-click="sortBy('social')">social score</span>
+            </div>
+        </div>
         <div class="row content">
             <h4 class="nullMessage" ng-show="noContent">Sorry. We couldn't find any bootcamps for you!</h4>
-            <product-thumbnail ng-repeat="productEntry in products track by $index | orderBy: sortMethod" ng-hide="productEntry.seller || productEntry.inventory === 0" product="productEntry"></product-thumbnail>
+            <product-thumbnail ng-repeat="productEntry in products track by $index | orderBy: sortMethod | filter: search.query" ng-hide="productEntry.seller || productEntry.inventory === 0" product="productEntry"></product-thumbnail>
         </div>
     </div>
 </div>

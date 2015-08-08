@@ -5,11 +5,8 @@ module.exports = [{
         first: "Billy",
         last: "Pilgrim"
     },
-    roles: ["Merchant"],
-    photo: "http://www.fullstackacademy.com/img/team/joe_alves.jpg",
-    storeName: 'For World Domination',
-    storeDesc: 'I want to dominate the world as I dominate the pixel.',
-    storeURL: 'FWD'
+    roles: ["Admin"],
+    photo: "http://www.fullstackacademy.com/img/team/joe_alves.jpg"
 }, {
     email: "gumbo@gmail.com",
     password: "GoldMoney",
@@ -35,11 +32,8 @@ module.exports = [{
         first: "Elbow",
         last: "Pasta"
     },
-    roles: ["Merchant"],
-    photo: "http://www.fullstackacademy.com/img/team/zeke_nierenberg.jpg",
-    storeName: 'Silly Willy',
-    storeDesc: 'To destoy the world with non eco-friendly robots.',
-    storeURL: 'SillyWilly'
+    roles: ["User"],
+    photo: "http://www.fullstackacademy.com/img/team/zeke_nierenberg.jpg"
 }, {
     email: "jimmy@boy.com",
     password: "test",
@@ -47,6 +41,6 @@ module.exports = [{
         first: "Jimmy",
         last: "Boy"
     },
-    roles: ["Merchant"],
+    roles: ["User"],
     photo: "http://www.fullstackacademy.com/img/team/JF.jpg"
 }];
