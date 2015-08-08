@@ -2,20 +2,13 @@
 
 > Ranking all the bootcamps in the world.
 
+> Need to add some Waffle badges soon.
+
 ![Built at Fullstack](https://img.shields.io/badge/Built%20at-Fullstack-red.svg?style=flat-square)
 
-> Need to add Waffle badges soon.
-
 ---
 
-## Check out the site at <a href="http://rank-me.herokuapp.com" target="_blank">`http://robopocalypse.herokuapp.com`</a>.
-
----
-
-> Built with ❤️ at [Fullstack Academy](http://fullstackacademy.com "Fullstack Academy").
->
-> Last updated August 6, 2015.
-
+## Check out the site at <a href="http://rank-me.herokuapp.com" target="_blank">`http://rank-me.herokuapp.com`</a>.
 
 ---
 
@@ -30,14 +23,20 @@
     - Course Report
     - Google+
     - Quora
-- Likes/Followers are scraped from
+- Social score is calculated from
     - Facebook
+    - Google+
     - Quora
     - Twitter
-    - Google+
 
 ---
 
-## Features To Add
+## Future Features
 
-- LinkedIn
+- Add LinkedIn to social score
+
+---
+
+> Built with ❤️ at [Fullstack Academy](http://fullstackacademy.com "Fullstack Academy").
+>
+> Last updated August 6, 2015.
