@@ -22,17 +22,17 @@ router.param("productId", function(req, res, next, productId) {
 
 //get all products
 router.get("/", function(req, res) {
-    if(req.query.category) req.query.category = JSON.parse(req.query.category)
+    if(req.query.category) req.query.category = JSON.parse(req.query.category);
     Product.find(req.query)
         .populate({
             path: 'seller',
             select: 'storeName'
         })
         .exec().then(function (products) {
-        res.json(products)
+        res.json(products);
     }, function(err){
-        res.send(err)
-    })
+        res.send(err);
+    });
 });
 
 // add a products
@@ -42,7 +42,7 @@ router.post("/", function(req, res) {
             res.status(201).json(product);
         }, function(err){
             console.log(err);
-            res.send(err)
+            res.send(err);
         });
 });
 

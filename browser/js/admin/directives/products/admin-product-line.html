@@ -1,65 +1,58 @@
-<div class="mdl-card mdl-shadow--3dp centerText marginBottom" style="padding:3%; width:inherit;">
+<div class="mdl-card mdl-shadow--3dp centerText marginBottom">
     <form>
-        <div class="col-sm-12 col-md-6 col-lg-6">
-            <div class="row marginTop marginBottom">
-                <div ng-repeat="photo in theProduct.photos track by $index">
-                    <img class="adminProductThumb" ng-src="{{photo}}">
-                    <i class="fa fa-times-circle fa-2x" ng-click="removeImg($index)"></i>
-                </div>
+        <div class="col-md-6">
+            <div class="row marginTopBottom">
+                <label>Bootcamp Title</label>
+                <input ng-model="theProduct.title" />
             </div>
-            <div class="row marginBottom">
-                <md-input-container class="lineItem" flex>
-                    <label>ID</label>
-                    <input ng-model="theProduct._id" disabled />
-                </md-input-container>
+            <div class="row marginTopBottom">
+                <label>Course Report URL</label>
+                <input ng-model="theProduct.courseReport.url" />
             </div>
-            <div class="row marginTop marginBottom">
-                <md-input-container class="lineItem" flex>
-                    <label>Title</label>
-                    <input ng-model="theProduct.title" />
-                </md-input-container>
+            <div class="row marginTopBottom">
+                <label>Facebook URL</label>
+                <input ng-model="theProduct.facebook.url" />
             </div>
-            <div class="row marginTop marginBottom">
-                <a class="btn btn-primary btn-lg btn-standard" ng-click="update()"><i class="fa fa-pencil"></i> Update</a>
+            <div class="row marginTopBottom">
+                <label>Google+ URL</label>
+                <input ng-model="theProduct.googlePlus.url" />
             </div>
-            <div class="row marginTop marginBottom">
-                <a class="btn btn-primary btn-lg btn-standard" ng-click="delete()"><i class="fa fa-times"></i> Delete</a>
+            <div class="row marginTopBottom">
+                <label>LinkedIn URL</label>
+                <input ng-model="theProduct.linkedin.url" />
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-6">
-            <div class="row marginTop marginBottom">
-                <md-input-container class="lineItem" flex>
-                    <label>Description</label>
-                    <textarea ng-model="theProduct.description"></textarea>
-                </md-input-container>
+        <div class="col-md-6">
+            <div class="row marginTopBottom">
+                <label>Quora URL</label>
+                <input ng-model="theProduct.quora.url" />
             </div>
-            <div class="row marginTop marginBottom">
-                <md-input-container class="lineItem" flex>
-                    <label>Price</label>
-                    <input ng-model="theProduct.price" />
-                </md-input-container>
+            <div class="row marginTopBottom">
+                <label>Switchup URL</label>
+                <input ng-model="theProduct.switchup.url" />
             </div>
-            <div class="row marginTop marginBottom">
-                <md-input-container class="lineItem" flex>
-                    <label>Inventory</label>
-                    <input ng-model="theProduct.inventory" />
-                </md-input-container>
+            <div class="row marginTopBottom">
+                <label>Techendo URL</label>
+                <input ng-model="theProduct.techendo.url" />
             </div>
-            <div class="row marginTop marginBottom">
-                <md-input-container class="lineItem">
-                    <md-select ng-model="theProduct.seller" placeholder="{{theProduct.seller ? theProduct.seller.storeName : 'Select User Store'}}" style="min-width: 200px;">
-                        <md-option ng-value="store" ng-repeat="store in stores">{{store.storeName}}</md-option>
-                    </md-select>
-                </md-input-container>
+            <div class="row marginTopBottom">
+                <label>Twitter URL</label>
+                <input ng-model="theProduct.twitter.url" />
             </div>
-            <div class="row marginTop marginBottom">
-                <label>Categories</label>
-                <div layout="row" layout-wrap>
-                    <div ng-repeat="category in categories">
-                        <md-checkbox ng-checked="exists(category._id, theProduct.category)" ng-click="toggle(category._id, theProduct.category)">
-                            {{ category.name }}
-                        </md-checkbox>
-                    </div>
+            <div class="row marginTopBottom">
+                <label>Yelp URL</label>
+                <input ng-model="theProduct.yelp.url" />
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="row marginTopBottom">
+                    <a class="btn btn-primary btn-lg btn-standard" ng-click="update()"><i class="fa fa-pencil"></i> Update</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row marginTopBottom">
+                    <a class="btn btn-primary btn-lg btn-standard" ng-click="delete()"><i class="fa fa-times"></i> Delete</a>
                 </div>
             </div>
         </div>

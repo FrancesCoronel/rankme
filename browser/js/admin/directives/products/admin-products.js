@@ -9,13 +9,15 @@ app.directive('adminProducts', function() {
     };
 });
 
-app.controller('AdminProductsCtrl', function($scope, $rootScope, Products, Stores) {
+app.controller('AdminProductsCtrl', function($scope, $rootScope, $http, Products, Scrapers) {
+    $scope.quoraFound = false;
     $scope.newProduct = {};
     $scope.newProduct.category = [];
     $scope.newProduct.photos = [];
     $scope.addingImage = "";
     $scope.showAddProduct = false;
     var imageBox = document.getElementById("productImages");
+    //var quoraURL = document.getElementById("quoraURL").value();
     $scope.addImage = function() {
         $scope.newProduct.photos.push($scope.addingImage);
         var image = document.createElement("IMG");
@@ -23,7 +25,6 @@ app.controller('AdminProductsCtrl', function($scope, $rootScope, Products, Store
         imageBox.appendChild(image);
         $scope.addingImage = "";
     };
-
     $scope.toggle = function(item, list) {
         var idx = list.indexOf(item);
         if (idx > -1) list.splice(idx, 1);
@@ -38,12 +39,18 @@ app.controller('AdminProductsCtrl', function($scope, $rootScope, Products, Store
         });
     };
     getProducts();
-    Stores.getAll().then(function(stores) {
-        $scope.stores = stores;
-    });
     $scope.addProduct = function() {
         Products.createProduct($scope.newProduct).then(function() {
             getProducts();
+        });
+    };
+    $scope.checkQuora = function() {
+        var quoraURL = $scope.newProduct.quora.url;
+        Scrapers.getQuora(quoraURL).then(function(data) {
+            $scope.newProduct.quora.num = data.quoraNumReviews;
+            $scope.newProduct.quora.avgRating = data.quoraAvgRating;
+            $scope.newProduct.quora.followers = data.quoraFollowers;
+            $scope.quoraFound = true;
         });
     };
     var unbind = $rootScope.$on("productUpdate", getProducts);

@@ -23,13 +23,13 @@ app.controller('HomeCtrl', function($scope, $state, Products) {
 
     var sortMethod = "title";
 
-    Products.getAll()
-        .then(function(data) {
-            $scope.products = data;
-        })
-        .catch(function(err) {
-            console.log('error', err);
-        });
+    // Products.getAll()
+    //     .then(function(data) {
+    //         $scope.products = data;
+    //     })
+    //     .catch(function(err) {
+    //         console.log('error', err);
+    //     });
 
     $scope.sortBy = function(predicate) {
         if (predicate === $scope.sortMethod) {
@@ -49,14 +49,4 @@ app.directive("homePage", function() {
             search: "=search"
         }
     };
-});
-
-app.config(function($stateProvider) {
-
-    $stateProvider.state('browse', {
-        url: '/browse',
-        templateUrl: 'js/browse/browse.html',
-        controller: 'BrowseCtrl'
-    });
-
 });

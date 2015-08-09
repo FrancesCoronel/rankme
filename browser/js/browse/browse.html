@@ -1,9 +1,0 @@
-<div class="centeredWithMaxWidth thinner">
-	<span class="glyphicon glyphicon-search"></span>
-	<input ng-model="search.query" placeholder="Search Games by Title, Developer, Genre, etc" style="width:300px;margin-right: 10px"></input>
-
-	<p style="display:inline">sort by: <span ng-click="sortBy('title')">title</span> | <span ng-click="sortBy('downloads')">downloads</span> | <span ng-click="sortBy('genre')">genre </span> | <span ng-click="sortBy('price')">minimum price</span>  </p></br>
-	<div id = "bigcontainer">
-		<single-game-thumb ng-repeat="game in gamesList | orderBy : sortMethod | filter: search.query" ></single-game-thumb>
-	</div>
-</div>

@@ -46,7 +46,7 @@ button.btn.btn-lg.btn-primary.btn-block {
 
 .btn-primary {
     color: white;
-    background-color: #5898f1
+    background-color: #5898f1;
     border: transparent;
 }
 
@@ -60,4 +60,8 @@ button.btn.btn-lg.btn-primary.btn-block {
     color: white;
     background-color: lighten(#5898f1, 50%);
     border-color: #5898f1;
+}
+
+input {
+    width: 90%;
 }

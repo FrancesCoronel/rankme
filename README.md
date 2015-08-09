@@ -1,5 +1,7 @@
 # Rank.me
 
+<img src="https://fvcproductions.files.wordpress.com/2015/08/logo.png" width="200">
+
 > Ranking all the bootcamps in the world.
 
 > Need to add some Waffle badges soon.

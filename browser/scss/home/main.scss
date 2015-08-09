@@ -83,3 +83,8 @@ a {
 .valign-middle [class*="column"] + [class*="column"]:last-child {
     float: none;
 }
+
+.mdl-card {
+    z-index: 0;
+    width: 100%;
+}

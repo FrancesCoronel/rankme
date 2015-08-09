@@ -38,24 +38,3 @@
         </div>
     </div>
 </div>
-<div class="row marginAuto">
-    <div class="col-sm-12 col-lg-6 col-md-6">
-        <div class="thumbnail mdl-card mdl-shadow--3dp" style="padding:10%;">
-            <div class="centerText">
-                <h1><i class="fa fa-weixin fa-2x"></i> Reviews</h1>
-            </div>
-            <product-review ng-repeat="review in reviews" thereview="review" userpage="true"></product-review>
-        </div>
-    </div>
-    <div class="col-sm-12 col-lg-6 col-md-6">
-        <div class="thumbnail mdl-card mdl-shadow--3dp" style="padding:10%;">
-            <div class="centerText">
-                <h1><i class="fa fa-cart-arrow-down fa-2x"></i></i> Orders</h1>
-            </div>
-            <fieldset ng-repeat="order in orders">
-                <user-order-line order="order">
-                </user-order-line>
-            </fieldset>
-        </div>
-    </div>
-</div>
