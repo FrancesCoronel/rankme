@@ -1,0 +1,37 @@
+.btn:hover {
+    cursor: url(http://cur.cursors-4u.net/others/oth-7/oth639.cur), progress !important;
+    outline: 0;
+}
+
+.btn-primary {
+    color: white;
+    background-color: #5898f1;
+    border: transparent;
+}
+
+.btn-primary {
+    color: white;
+    background-color: #5898f1;
+    border: transparent;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    background-color: #4f88d8;
+}
+
+.btn-primary:active:hover {
+    color: white;
+    background-color: #9ac1f6;
+    border-color: #5898f1;
+}
+
+.btn-standard:hover {
+    color: white;
+    background-color: #9ac1f6;
+    border-color: #5898f1;
+}
+
+button.btn.btn-lg.btn-primary.btn-block {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}

@@ -4,59 +4,82 @@
             <h3>Add a bootcamp</h3>
         </div>
     </div>
-    <form>
+    <div class="row marginTopBottom">
+        <md-input-container flex>
+            <label>Bootcamp Title</label>
+            <input ng-model="newProduct.title" />
+        </md-input-container>
+    </div>
+    <div class="row marginTopBottom">
         <div class="col-md-6">
             <div class="row marginTopBottom">
-                <label>Bootcamp Title</label>
-                <input ng-model="newProduct.title" />
+                <md-input-container flex>
+                    <label>AngelList URL</label>
+                    <input ng-model="newProduct.angelList.url" />
+                </md-input-container>
             </div>
             <div class="row marginTopBottom">
-                <label>Course Report URL</label>
-                <input ng-model="newProduct.courseReport.url" />
+                <md-input-container flex>
+                    <label>Course Report URL</label>
+                    <input ng-model="newProduct.courseReport.url" />
+                </md-input-container>
             </div>
             <div class="row marginTopBottom">
-                <label>Facebook URL</label>
-                <input ng-model="newProduct.facebook.url" />
+                <md-input-container flex>
+                    <label>Facebook URL</label>
+                    <input ng-model="newProduct.facebook.url" />
+                </md-input-container>
             </div>
             <div class="row marginTopBottom">
-                <label>Google+ URL</label>
-                <input ng-model="newProduct.googlePlus.url" />
+                <md-input-container flex>
+                    <label>Google+ URL</label>
+                    <input ng-model="newProduct.googlePlus.url" />
+                </md-input-container>
             </div>
             <div class="row marginTopBottom">
-                <label>LinkedIn URL</label>
-                <input ng-model="newProduct.linkedin.url" />
+                <md-input-container flex>
+                    <label>LinkedIn URL</label>
+                    <input ng-model="newProduct.linkedin.url" />
+                </md-input-container>
             </div>
         </div>
         <div class="col-md-6">
             <div class="row marginTopBottom">
-                <label>Quora URL</label>
-                <input ng-model="newProduct.quora.url" />
-                <button ng-click="checkQuora()">Check Quora</button>
-                <div ng-show="quoraFound === false" ng-hide="quoraFound === true">No data found from Quora!</div>
-                <div ng-show="quoraFound === true" ng-hide="quoraFound === false">Data found from Quora!</div>
+                <md-input-container flex>
+                    <label>Quora URL</label>
+                    <input ng-model="newProduct.quora.url" />
+                </md-input-container>
             </div>
             <div class="row marginTopBottom">
-                <label>Switchup URL</label>
-                <input ng-model="newProduct.switchup.url" />
+                <md-input-container flex>
+                    <label>Switchup URL</label>
+                    <input ng-model="newProduct.switchup.url" />
+                </md-input-container>
             </div>
             <div class="row marginTopBottom">
-                <label>Techendo URL</label>
-                <input ng-model="newProduct.techendo.url" />
+                <md-input-container flex>
+                    <label>Techendo URL</label>
+                    <input ng-model="newProduct.techendo.url" />
+                </md-input-container>
             </div>
             <div class="row marginTopBottom">
-                <label>Twitter URL</label>
-                <input ng-model="newProduct.twitter.url" />
+                <md-input-container flex>
+                    <label>Twitter URL</label>
+                    <input ng-model="newProduct.twitter.url" />
+                </md-input-container>
             </div>
             <div class="row marginTopBottom">
-                <label>Yelp URL</label>
-                <input ng-model="newProduct.yelp.url" />
+                <md-input-container flex>
+                    <label>Yelp URL</label>
+                    <input ng-model="newProduct.yelp.url" />
+                </md-input-container>
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="row marginTopBottom">
-                <a class="btn btn-primary btn-lg btn-standard" ng-click="addProduct()">ADD THIS BOOTCAMP</a>
-            </div>
+    </div>
+    <div class="col-md-12">
+        <div class="row marginTopBottom">
+            <a class="btn btn-primary btn-lg btn-standard marginBottom" ng-click="addProduct()">ADD THIS BOOTCAMP</a>
         </div>
-    </form>
+    </div>
 </div>
-<admin-product-line ng-repeat="product in products" product="product"></admin-product-line>
+<admin-product-line ng-repeat="product in products" product="product" class="col-md-6"></admin-product-line>

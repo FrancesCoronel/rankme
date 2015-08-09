@@ -1,18 +1,11 @@
 <div id="home col-sm-12 col-md-12 col-lg-12">
-    <!-- <div class="row">
-        <h1 ng-show="search">Search: {{search}}</h1>
-    </div> -->
-    <!-- <div class="row centerText">
-        <div class="col-md-12">
-            <h1>Sort By</h1>
-        </div>
-    </div> -->
     <div class="row marginLittleBottom">
         <div class="col-md-3">
             <button class="btn btn-lg btn-primary btn-block btn-standard" ng-click="sortBy('title')">title</button>
         </div>
         <div class="col-md-3">
-            <button class="btn btn-lg btn-primary btn-block btn-standard" ng-click="sortBy('avgRating')">average rating</button> </p>
+            <button class="btn btn-lg btn-primary btn-block btn-standard" ng-click="sortBy('avgRating')">average rating</button>
+            </p>
         </div>
         <div class="col-md-3">
             <button class="btn btn-lg btn-primary btn-block btn-standard" ng-click="sortBy('totalReviews')">number of reviews</button>
@@ -23,6 +16,6 @@
     </div>
     <div class="row">
         <h4 class="nullMessage" ng-show="noContent">Sorry. We couldn't find any bootcamps for you!</h4>
-        <product-thumbnail ng-repeat="productEntry in products track by $index | orderBy: sortMethod" product="productEntry"></product-thumbnail>
+        <product-thumbnail ng-repeat="productEntry in products | orderBy:predicate:reverse" product="productEntry"></product-thumbnail>
     </div>
 </div>

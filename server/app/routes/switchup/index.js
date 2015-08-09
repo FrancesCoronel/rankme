@@ -6,20 +6,17 @@ module.exports = router;
 var request = require('request');
 var cheerio = require('cheerio');
 
-router.get('/api/quora/:url', function(req) {
+router.get('/api/switchup/:url', function(req) {
     request(req.params.url, function(err, res, body) {
         if (!err & res.statusCode === 200) {
             var $ = cheerio.load(body);
-            var numFollowers = $('span.count', '.primary_item').text();
-            console.log(numFollowers);
-            var numReviews = $('span.hidden', '.TopicReviewRatingLabel').find('span.count').find('span.value-title').attr('title');
+            var numReviews = $("span[itemprop='reviewCount']").text();
             console.log(numReviews);
-            var avgRating = $('span.review_rating').children().length;
+            var avgRating = $("span[itemprop='ratingvalue']").text();
             console.log(avgRating);
             res.json({
-                quoraNumFollowers: numFollowers,
-                quoraNumReviews: numReviews,
-                quoraAvgRating: avgRating
+                switchupNumReviews: numReviews,
+                switchupAvgRating: avgRating
             });
         }
     });

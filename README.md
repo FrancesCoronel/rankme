@@ -18,24 +18,54 @@
 
 - Logo, description, and home page are grabbed from Twitter profile.
 - Number of reviews and average ratings are scraped from
-    - Facebook
-    - Switchup
-    - Yelp
-    - Techendo
-    - Course Report
-    - Google+
-    - Quora
+    -[] Course Report
+        - number of reviews
+    -[] Facebook
+        - number of reviews
+        - average rating
+    -[] Google+
+        - number of reviews
+        - average rating
+    -[] Switchup
+        - number of reviews
+        - average rating
+    -[] Techendo
+        - number of reviews
+        - positive ratings
+        - negative ratings
+    -[] Quora
+        - number of reviews
+        - average rating
+    -[] Yelp
+        - number of reviews
+        - average rating
 - Social score is calculated from
-    - Facebook
-    - Google+
-    - Quora
-    - Twitter
+    -[X] AngelList
+        - followers
+    -[] Facebook
+        - likes
+    -[] Google+
+        - followers
+    -[] LinkedIn
+        - followers
+    -[] Quora
+        - followers
+    -[] Twitter
+        - followers
 
 ---
 
 ## Future Features
 
-- Add LinkedIn to social score
+- Users can add bootcamps.
+- Admins can add/remove/update bootcamps.
+- Sort by specific provider.
+- Resource page
+- Sockets
+- Calculating Techendo average rating fairly
+- Calculate number of **unique** reviews from each provider, but don't actually copy the reviews over
+- Better comments so others can easily contribute
+- get links to other links from Course Report
 
 ---
 

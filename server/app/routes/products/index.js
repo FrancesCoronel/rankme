@@ -22,17 +22,17 @@ router.param("productId", function(req, res, next, productId) {
 
 //get all products
 router.get("/", function(req, res) {
-    if(req.query.category) req.query.category = JSON.parse(req.query.category);
+    if (req.query.category) req.query.category = JSON.parse(req.query.category);
     Product.find(req.query)
         .populate({
             path: 'seller',
             select: 'storeName'
         })
-        .exec().then(function (products) {
-        res.json(products);
-    }, function(err){
-        res.send(err);
-    });
+        .exec().then(function(products) {
+            res.json(products);
+        }, function(err) {
+            res.send(err);
+        });
 });
 
 // add a products
@@ -40,7 +40,7 @@ router.post("/", function(req, res) {
     Product.create(req.body)
         .then(function(product) {
             res.status(201).json(product);
-        }, function(err){
+        }, function(err) {
             console.log(err);
             res.send(err);
         });
@@ -48,7 +48,15 @@ router.post("/", function(req, res) {
 
 // get single product
 router.get("/:productId", function(req, res) {
-    res.json(req.product);
+    Product.create(req.body)
+        .then(function(game) {
+            console.log("new product created");
+            res.json(req.product);
+        })
+        .then(null, function(err) {
+            console.log(err);
+            next(err);
+        });
 });
 
 // update single product

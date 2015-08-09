@@ -23,6 +23,7 @@ var chalk = require("chalk");
 var connectToDb = require("./server/db");
 var User = Promise.promisifyAll(mongoose.model("User"));
 var Product = Promise.promisifyAll(mongoose.model("Product"));
+var http = require("http");
 
 var seedUsers = function() {
     var users = require("./seeds/user");

@@ -38,30 +38,3 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-
-button.btn.btn-lg.btn-primary.btn-block {
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-
-.btn-primary {
-    color: white;
-    background-color: #5898f1;
-    border: transparent;
-}
-
-.btn-primary:active:hover {
-    color: white;
-    background-color: lighten(#5898f1, 50%);
-    border-color: #5898f1;
-}
-
-.btn-standard:hover {
-    color: white;
-    background-color: lighten(#5898f1, 50%);
-    border-color: #5898f1;
-}
-
-input {
-    width: 90%;
-}

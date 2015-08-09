@@ -1,60 +1,78 @@
-<div class="mdl-card mdl-shadow--3dp centerText marginBottom">
-    <form>
-        <div class="col-md-6">
-            <div class="row marginTopBottom">
+<div class="mdl-card mdl-shadow--3dp centerText marginBottom col-md-6">
+    <div class="row marginTopBottom">
+        <div class="col-md-12 marginTop">
+            <md-input-container flex>
                 <label>Bootcamp Title</label>
                 <input ng-model="theProduct.title" />
-            </div>
-            <div class="row marginTopBottom">
-                <label>Course Report URL</label>
-                <input ng-model="theProduct.courseReport.url" />
-            </div>
-            <div class="row marginTopBottom">
-                <label>Facebook URL</label>
-                <input ng-model="theProduct.facebook.url" />
-            </div>
-            <div class="row marginTopBottom">
-                <label>Google+ URL</label>
-                <input ng-model="theProduct.googlePlus.url" />
-            </div>
-            <div class="row marginTopBottom">
-                <label>LinkedIn URL</label>
-                <input ng-model="theProduct.linkedin.url" />
-            </div>
+            </md-input-container>
+        </div>
+    </div>
+    <div class="row marginTopBottom">
+        <md-input-container flex>
+            <label>AngelList URL</label>
+            <input ng-model="theProduct.angelList.url" />
+        </md-input-container>
+    </div>
+    <div class="row marginTopBottom">
+        <md-input-container flex>
+            <label>Course Report URL</label>
+            <input ng-model="theProduct.courseReport.url" />
+        </md-input-container>
+    </div>
+    <div class="row marginTopBottom">
+        <md-input-container flex>
+            <label>Facebook URL</label>
+            <input ng-model="theProduct.facebook.url" />
+        </md-input-container>
+    </div>
+    <div class="row marginTopBottom">
+        <md-input-container flex>
+            <label>Google+ URL</label>
+            <input ng-model="theProduct.googlePlus.url" />
+        </md-input-container>
+    </div>
+    <div class="row marginTopBottom">
+        <md-input-container flex>
+            <label>LinkedIn URL</label>
+            <input ng-model="theProduct.linkedin.url" />
+        </md-input-container>
+    </div>
+    <div class="row marginTopBottom">
+        <md-input-container flex>
+            <label>Quora URL</label>
+            <input ng-model="theProduct.quora.url" />
+        </md-input-container>
+    </div>
+    <div class="row marginTopBottom">
+        <md-input-container flex>
+            <label>Switchup URL</label>
+            <input ng-model="theProduct.switchup.url" />
+        </md-input-container>
+    </div>
+    <div class="row marginTopBottom">
+        <md-input-container flex>
+            <label>Techendo URL</label>
+            <input ng-model="theProduct.techendo.url" />
+        </md-input-container>
+    </div>
+    <div class="row marginTopBottom">
+        <md-input-container flex>
+            <label>Twitter URL</label>
+            <input ng-model="theProduct.twitter.url" />
+        </md-input-container>
+    </div>
+    <div class="row marginTopBottom">
+        <md-input-container flex>
+            <label>Yelp URL</label>
+            <input ng-model="theProduct.yelp.url" />
+        </md-input-container>
+    </div>
+    <div class="row marginTopBottom">
+        <div class="col-md-6">
+            <a class="btn btn-primary btn-lg btn-standard marginBottom" ng-click="update()"><i class="fa fa-pencil"></i> Update</a>
         </div>
         <div class="col-md-6">
-            <div class="row marginTopBottom">
-                <label>Quora URL</label>
-                <input ng-model="theProduct.quora.url" />
-            </div>
-            <div class="row marginTopBottom">
-                <label>Switchup URL</label>
-                <input ng-model="theProduct.switchup.url" />
-            </div>
-            <div class="row marginTopBottom">
-                <label>Techendo URL</label>
-                <input ng-model="theProduct.techendo.url" />
-            </div>
-            <div class="row marginTopBottom">
-                <label>Twitter URL</label>
-                <input ng-model="theProduct.twitter.url" />
-            </div>
-            <div class="row marginTopBottom">
-                <label>Yelp URL</label>
-                <input ng-model="theProduct.yelp.url" />
-            </div>
+            <a class="btn btn-primary btn-lg btn-standard marginBottom" ng-click="delete()"><i class="fa fa-times"></i> Delete</a>
         </div>
-        <div class="col-md-12">
-            <div class="col-md-6">
-                <div class="row marginTopBottom">
-                    <a class="btn btn-primary btn-lg btn-standard" ng-click="update()"><i class="fa fa-pencil"></i> Update</a>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row marginTopBottom">
-                    <a class="btn btn-primary btn-lg btn-standard" ng-click="delete()"><i class="fa fa-times"></i> Delete</a>
-                </div>
-            </div>
-        </div>
-    </form>
+    </div>
 </div>

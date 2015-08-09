@@ -5,7 +5,11 @@ module.exports = [{
     homePage: "http://fullstackacademy.com",
     totalReviews: "131",
     avgRating: "5",
-    totalSocial: "3432",
+    totalSocial: "3829",
+    angelList: {
+        url: "https://angel.co/fullstack-academy",
+        followers: "25"
+    },
     courseReport: {
         url: "https://www.coursereport.com/schools/fullstack-academy",
         num: "19",
@@ -22,6 +26,10 @@ module.exports = [{
         num: "17",
         avg: "5",
         followers: "14"
+    },
+    linkedin: {
+        url: "https://www.linkedin.com/company/fullstack-academy",
+        followers: "372"
     },
     quora: {
         url: "https://www.quora.com/Fullstack-Academy",

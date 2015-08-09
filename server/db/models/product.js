@@ -29,6 +29,14 @@ var schema = new mongoose.Schema({
     totalSocial: {
         type: Number
     },
+    angelList: {
+        url: {
+            type: String
+        },
+        followers: {
+            type: Number
+        }
+    },
     courseReport: {
         url: {
             type: String
@@ -63,6 +71,14 @@ var schema = new mongoose.Schema({
         },
         avg: {
             type: Number
+        },
+        followers: {
+            type: Number
+        }
+    },
+    linkedin: {
+        url: {
+            type: String
         },
         followers: {
             type: Number

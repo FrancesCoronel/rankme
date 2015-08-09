@@ -14,31 +14,18 @@ app.controller('HomeCtrl', function($scope, $state, Products) {
             $scope.noContent = true;
         }
     };
-
     if ($scope.search) {
         Products.search($scope.search).then(assignData);
     } else {
         Products.getAll().then(assignData);
     }
-
-    var sortMethod = "title";
-
-    // Products.getAll()
-    //     .then(function(data) {
-    //         $scope.products = data;
-    //     })
-    //     .catch(function(err) {
-    //         console.log('error', err);
-    //     });
-
+    $scope.predicate = 'title';
+    $scope.reverse = true;
     $scope.sortBy = function(predicate) {
-        if (predicate === $scope.sortMethod) {
-            $scope.sortMethod = "-" + predicate;
-        } else {
-            $scope.sortMethod = predicate;
-        }
-        console.log($scope.sortMethod);
+        $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+        $scope.predicate = predicate;
     };
+
 });
 
 app.directive("homePage", function() {

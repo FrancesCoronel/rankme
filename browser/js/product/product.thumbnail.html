@@ -1,11 +1,6 @@
-<style>
-.productCard > .mdl-card__title {
-    color: black;
-    background: url("{{theProduct.logo}}") center / cover;
-}
-</style>
-<div class="col-md-6 centerText">
+<div class="col-md-6 centerText marginLittleTop">
     <div class="mdl-card mdl-shadow--2dp productCard">
+        <a href="{{theProduct.logo}}"><img src="{{theProduct.logo}}" style="img-responsive" alt="{{theProduct.title}}"></a>
         <div class="mdl-card__title mdl-card--expand"></div>
         <div class="mdl-card__supporting-text">
             <div class="row valign-middle">
@@ -29,6 +24,10 @@
             <div class="row valign-middle">
                 <p>{{theProduct.description}}</p>
             </div>
+            <br>
+            <div class="row valign-middle">
+                <a href="{{theProduct.homePage}}" target="_blank"><p>{{theProduct.homePage}}</p></a>
+            </div>
         </div>
         <div class="mdl-card__actions mdl-card--border">
             <a class="mdl-button mdl-button--colored mdl-js-button" ng-click="seeBootcamp = !seeBootcamp">See Details</a>
@@ -36,8 +35,15 @@
     </div>
     <div class="mdl-card mdl-shadow--2dp detailsCard" ng-init="seeBootcamp = false" ng-show="seeBootcamp">
         <div class="mdl-card__supporting-text">
-            <hr>
             <div class="row valign-middle">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
+                    <a href="{{theProduct.angelList.url}}" target="_blank"><img src="images/angellist.png" class="img-responsive"></a>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
+                    <div class="row">
+                        <p><b>{{theProduct.angelList.followers}}</b> followers</p>
+                    </div>
+                </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <a href="{{theProduct.courseReport.url}}" target="_blank"><img src="images/coursereport.png" class="img-responsive"></a>
                 </div>
@@ -49,6 +55,9 @@
                         <p><b>{{theProduct.courseReport.num}}</b> reviews</p>
                     </div>
                 </div>
+            </div>
+            <hr>
+            <div class="row valign-middle">
                 <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <a href="{{theProduct.facebook.url}}" target="_blank"><img src="images/facebook.png" class="img-responsive"></a>
                 </div>
@@ -63,9 +72,6 @@
                         <p><b>{{theProduct.facebook.likes}}</b> likes</p>
                     </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row marginBottom valign-middle">
                 <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <a href="{{theProduct.googlePlus.url}}" target="_blank"><img src="images/googleplus.png" class="img-responsive"></a>
                 </div>
@@ -78,6 +84,17 @@
                     </div>
                     <div class="row">
                         <p><b>{{theProduct.googlePlus.followers}}</b> reviews</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row marginBottom valign-middle">
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
+                    <a href="{{theProduct.linkedin.url}}" target="_blank"><img src="images/linkedin.png" class="img-responsive"></a>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
+                    <div class="row">
+                        <p><b>{{theProduct.linkedin.followers}}</b> followers</p>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">

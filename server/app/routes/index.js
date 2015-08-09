@@ -6,6 +6,7 @@ router.use("/users", require("./users"));
 router.use("/products", require("./products"));
 router.use("/search", require("./search"));
 router.use("/quora", require("./quora"));
+router.use("/linkedin", require("./linkedin"));
 // Make sure this is after all of
 // the registered routes!
 router.use(function (req, res) {
