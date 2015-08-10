@@ -41,7 +41,7 @@
                             <a ui-sref="login">Login</a>
                         </li>
                         <li ng-show="!user">
-                            <a ui-sref="signup">Sign Up</a>
+                            <a ui-sref="signup" target="_self">Sign Up</a>
                         </li>
                         <!-- <li ng-show="user">
                             <a ng-click="logout()">Logout</a>
@@ -49,7 +49,7 @@
                     </ul>
                 </li>
                 <li ng-show="!user">
-                    <a ui-sref="login">Login</a>
+                    <a href="/auth/twitter">Login</a>
                 </li>
                 <li ng-show="user">
                     <a ng-click="logout()">Logout</a>

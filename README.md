@@ -66,6 +66,7 @@
 - Calculate number of **unique** reviews from each provider, but don't actually copy the reviews over
 - Better comments so others can easily contribute
 - get links to other links from Course Report
+- handle numbers with k in them
 
 ---
 

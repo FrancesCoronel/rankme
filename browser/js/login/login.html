@@ -4,7 +4,7 @@
             <h1 class="form-signin-heading centerText">Login</h1>
             <div class="row">
                 <!-- Email -->
-                <md-content class="col-lg-6 col-md-12 col-sm-12">
+                <md-content class="sm-12 md-12 lg-12">
                     <div layout layout-sm="column">
                         <md-input-container flex>
                             <label>
@@ -13,8 +13,10 @@
                         </md-input-container>
                     </div>
                 </md-content>
+            </div>
+            <div class="row">
                 <!-- Password -->
-                <md-content class="col-lg-6 col-md-12 col-sm-12">
+                <md-content class="sm-12 md-12 lg-12">
                     <div layout layout-sm="column">
                         <md-input-container flex>
                             <label>
@@ -26,11 +28,18 @@
             </div>
             <!-- Buttons -->
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="col-sm-12 col-md-12 col-lg-12">
                     <button class="btn btn-lg btn-primary btn-block btn-standard" type="submit"><i class="fa fa-sign-in"></i> Login</button>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
                     <button class="btn btn-lg btn-primary btn-block btn-standard" ng-click="forgot(login)"><i class="fa fa-question-circle"></i> Forgot your password?</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <auth-button provider-name="Twitter"></auth-button>
                 </div>
             </div>
         </form>
