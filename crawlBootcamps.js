@@ -32,18 +32,22 @@ var getBootcamps = function(urls) {
     var ratingScore = 0;
     // scraping AngelList
     var angelListURL = urls.angelList;
-    deferredRequest(angelListURL, function(err, res, body) {
-        var $ = cheerio.load(body);
+    deferredRequest(angelListURL).then(function(data) {
+        var $ = cheerio.load(data);
         var angelListNumFollowers = $('.tabs span').eq(2).children().children().text();
         console.log(angelListNumFollowersnumFollowers);
         product.angellist.followers = angelListNumFollowers;
         socialScore += angelListNumFollowers;
 
+    }).done(function(res) {
+        console.log("SUCCESS" + res.json());
+    }, function(err) {
+        console.log("ERROR: " + err);
     });
     // scraping Course Report
     var courseReportURL = urls.courseReport;
-    deferredRequest(courseReportURL, function(err, res, body) {
-        var $ = cheerio.load(body);
+    deferredRequest(courseReportURL).then(function(data) {
+        var $ = cheerio.load(data);
         var numStringReviews = $('#reviews_tab').children().text();
         var courseReportNumReviews = numStringReviews.match(/\d+$/)[0];
         reviewScore += courseReportNumReviews;
@@ -52,18 +56,22 @@ var getBootcamps = function(urls) {
     });
     // scraping LinkedIn
     var linkedInURL = urls.linkedin;
-    deferredRequest(linkedInURL, function(err, res, body) {
-        var $ = cheerio.load(body);
+    deferredRequest(linkedInURL).then(function(data) {
+        var $ = cheerio.load(data);
         var linkedInNumFollowers = $('.followers-count-num').text();
         socialScore += linkedInNumFollowers;
         console.log(linkedInNumFollowers);
         product.linkedin.followers = linkedInNumFollowers;
+    }).done(function(res) {
+        console.log("SUCCESS" + res.json());
+    }, function(err) {
+        console.log("ERROR: " + err);
     });
     // scraping Quora
     // adding on to rating
     var quoraURL = urls.quora;
-    deferredRequest(quoraURL, function(err, res, body) {
-        var $ = cheerio.load(body);
+    deferredRequest(quoraURL).then(function(data) {
+        var $ = cheerio.load(data);
         var quoraNumFollowers = $('span.count', '.primary_item').text();
         console.log(quoraNumFollowers);
         // adding to social score
@@ -79,12 +87,16 @@ var getBootcamps = function(urls) {
         product.quora.num = quoraNumReviews;
         product.quora.avg = quoraAvgRating;
         produc.quora.followers = quoraNumFollowers;
+    }).done(function(res) {
+        console.log("SUCCESS" + res.json());
+    }, function(err) {
+        console.log("ERROR: " + err);
     });
     // scraping switchup
     // adding on to rating
     var switchupURL = urls.switchup;
-    deferredRequest(switchupURL, function(err, res, body) {
-        var $ = cheerio.load(body);
+    deferredRequest(switchupURL).then(function(data) {
+        var $ = cheerio.load(data);
         var switchupNumReviews = $("span[itemprop='reviewCount']").text();
         console.log(switchupNumReviews);
         reviewScore += switchupNumReviews;
@@ -93,11 +105,15 @@ var getBootcamps = function(urls) {
         ratingScore += switchupAvgRating;
         product.switchup.num = switchupNumReviews;
         product.switchup.avg = switchupAvgRating;
+    }).done(function(res) {
+        console.log("SUCCESS" + res.json());
+    }, function(err) {
+        console.log("ERROR: " + err);
     });
     // scraping techendo
     var techendoURL = urls.techendo;
-    deferredRequest(techendoURL, function(err, res, body) {
-        var $ = cheerio.load(body);
+    deferredRequest(techendoURL).then(function(data) {
+        var $ = cheerio.load(data);
         var techendoPositiveReviews = $('div.rating span.positive-ratings-count').text();
         console.log(techendoPositiveReviews);
         var techendoNegativeReviews = $('div.rating span.negative-ratings-count').text();
@@ -108,11 +124,15 @@ var getBootcamps = function(urls) {
         product.techendo.positive = techendoPositiveReviews;
         product.techendo.negative = techendoNegativeReviews;
         product.techendo.num = techendoNumReviews;
+    }).done(function(res) {
+        console.log("SUCCESS" + res.json());
+    }, function(err) {
+        console.log("ERROR: " + err);
     });
     // scraping twitter
     var twitterURL = urls.twitter;
-    deferredRequest(twitterURL, function(err, res, body) {
-        var $ = cheerio.load(body);
+    deferredRequest(twitterURL).then(function(data) {
+        var $ = cheerio.load(data);
         var numStringFollowers = $(".ProfileNav").children().children().eq(2).children().children("span").text();
         // this comes out as Followers12445
         var twitterNumFollowers = numStringFollowers.match(/\d+$/)[0];
@@ -128,12 +148,16 @@ var getBootcamps = function(urls) {
         product.description = twitterBio;
         product.logo = twitterLogo;
         product.homePage = twitterHomePage;
+    }).done(function(res) {
+        console.log("SUCCESS" + res.json());
+    }, function(err) {
+        console.log("ERROR: " + err);
     });
     // scraping yelp
     // adding on to rating
     var yelpURL = urls.yelp;
-    deferredRequest(yelpURL, function(data) {
-        var $ = cheerio.load(body);
+    deferredRequest(yelpURL).then(function(data) {
+        var $ = cheerio.load(data);
         var yelpNumReviews = $("span[itemprop='reviewCount']").text();
         console.log(yelpNumReviews);
         reviewScore += yelpNumReviews;
@@ -142,13 +166,10 @@ var getBootcamps = function(urls) {
         console.log(yelpAvgRating);
         ratingScore += yelpAvgRating;
     }).done(function(res) {
-        // THIS BLOCK IS NEXT HANDLER (see previous block)
-
-        console.log(JSON.stringify(res, null, 4));
+        console.log("SUCCESS" + res.json());
     }, function(err) {
         console.log("ERROR: " + err);
     });
-
     // summing up
     product.totalReviews = reviewScore;
     product.avgRating = ratingScore / 3;
