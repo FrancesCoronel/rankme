@@ -22,7 +22,6 @@ var urls = [{
 
 var getBootcamps = function(urls) {
     var product = {};
-    product.title = urls.title;
     var socialScore = 0;
     var reviewScore = 0;
     var ratingScore = 0;
