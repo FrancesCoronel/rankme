@@ -1,5 +1,5 @@
 <div class="container noPadding centerText">
-    <div class="specialRow marginTop marginBottom">
+    <div class="specialRow">
         <form class="form-signin" name="registrationForm" ng-submit="createUser(credentials)">
             <!-- Title -->
             <h1 class="form-signin-heading centerText">Sign Up</h1>
@@ -11,6 +11,7 @@
                             <label>
                                 <h1>first name</h1></label>
                             <input type="text" name="firstName" class="form-control mdl-textfield__input" ng-model="credentials.name.first" required autofocus>
+                            <p ng-show="registrationForm.firstName.$invalid" class="help-block">Your first name is required.</p>
                         </md-input-container>
                     </div>
                 </md-content>
@@ -61,14 +62,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <auth-button provider-name="Google"></auth-button>
-                </div>
-                <div class="col-md-4">
+                <div class="col-sm-12 col-md-12 col-lg-12">
                     <auth-button provider-name="Twitter"></auth-button>
-                </div>
-                <div class="col-md-4">
-                    <auth-button provider-name="Facebook"></auth-button>
                 </div>
             </div>
         </form>

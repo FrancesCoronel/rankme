@@ -30,8 +30,8 @@ var getBootcamps = function(urls) {
     var scrapeAngelList = function() {
         var angelListURL = urls.angelList;
         return axios.get(angelListURL)
-            .then(function(res) {
-                var $ = cheerio.load(res.data);
+            .then(function(data) {
+                var $ = cheerio.load(data);
                 var angelListNumFollowers = $('.tabs span').eq(2).children().children().text();
                 console.log(angelListNumFollowersnumFollowers);
                 product.angellist.followers = angelListNumFollowers;
@@ -42,10 +42,10 @@ var getBootcamps = function(urls) {
     var scrapeCourseReport = function() {
         var courseReportURL = urls.courseReport;
         return axios.get(courseReportURL)
-            .then(function(res) {
-                var $ = cheerio.load(res.data);
+            .then(function(data) {
+                var $ = cheerio.load(data);
                 var numStringReviews = $('#reviews_tab').children().text();
-                var courseReportNumReviews = numStringReviews.match(/\d+$/)[0];
+                var courseReportNumReviews = numStringReviews.replace( /^\D+/g, '');
                 reviewScore += courseReportNumReviews;
                 console.log(courseReportNumReviews);
                 product.courseReport.num = courseReportNumReviews;
@@ -55,8 +55,8 @@ var getBootcamps = function(urls) {
     var scrapeLinkedIn = function() {
         var linkedInURL = urls.linkedin;
         return axios.get(linkedInURL)
-            .then(function(res) {
-                var $ = cheerio.load(res.data);
+            .then(function(data) {
+                var $ = cheerio.load(data);
                 var linkedInNumFollowers = $('.followers-count-num').text();
                 socialScore += linkedInNumFollowers;
                 console.log(linkedInNumFollowers);
@@ -68,8 +68,8 @@ var getBootcamps = function(urls) {
     var scrapeQuora = function() {
         var quoraURL = urls.quora;
         return axios.get(quoraURL)
-            .then(function(res) {
-                var $ = cheerio.load(res.data);
+            .then(function(data) {
+                var $ = cheerio.load(data);
                 var quoraNumFollowers = $('span.count', '.primary_item').text();
                 console.log(quoraNumFollowers);
                 // adding to social score
@@ -92,8 +92,8 @@ var getBootcamps = function(urls) {
     var scrapeSwitchup = function() {
         var switchupURL = urls.switchup;
         return axios.get(switchupURL)
-            .then(function(res) {
-                var $ = cheerio.load(res.data);
+            .then(function(data) {
+                var $ = cheerio.load(data);
                 var switchupNumReviews = $("span[itemprop='reviewCount']").text();
                 console.log(switchupNumReviews);
                 reviewScore += switchupNumReviews;
@@ -108,15 +108,15 @@ var getBootcamps = function(urls) {
     var scrapeTechendo = function() {
         var techendoURL = urls.techendo;
         return axios.get(techendoURL)
-            .then(function(res) {
-                var $ = cheerio.load(res.data);
+            .then(function(data) {
+                var $ = cheerio.load(data);
                 var techendoPositiveReviews = $('div.rating span.positive-ratings-count').text();
-                console.log(techendoPositiveReviews);
+                console.log("Techendo + Reviews",techendoPositiveReviews);
                 var techendoNegativeReviews = $('div.rating span.negative-ratings-count').text();
-                console.log(techendoNegativeReviews);
+                console.log("Techendo - Reviews",techendoNegativeReviews);
                 var techendoNumReviews = techendoPositiveReviews + techendoNegativeReviews;
                 reviewScore += techendoNumReviews;
-                console.log(techendoNumReviews);
+                console.log("Techendo Num Reviews", techendoNumReviews);
                 product.techendo.positive = techendoPositiveReviews;
                 product.techendo.negative = techendoNegativeReviews;
                 product.techendo.num = techendoNumReviews;
@@ -126,19 +126,19 @@ var getBootcamps = function(urls) {
     var scrapeTwitter = function() {
         var twitterURL = urls.techendo;
         return axios.get(twitterURL)
-            .then(function(res) {
-                var $ = cheerio.load(res.data);
+            .then(function(data) {
+                var $ = cheerio.load(data);
                 var numStringFollowers = $(".ProfileNav").children().children().eq(2).children().children("span").text();
                 // this comes out as Followers12445
-                var twitterNumFollowers = numStringFollowers.match(/\d+$/)[0];
-                console.log(twitterNumFollowers);
+                var twitterNumFollowers = numStringFollowers.replace( /^\D+/g, '');
+                console.log("Twitter Num Followers",twitterNumFollowers);
                 socialScore += twitterNumFollowers;
                 var twitterLogo = $('.ProfileAvatar-image').attr('src');
-                console.log(twitterLogo);
+                console.log("Twitter Logo", twitterLogo);
                 var twitterBio = $('.ProfileHeaderCard-bio').text();
-                console.log(twitterBio);
+                console.log("Twitter Bio", twitterBio);
                 var twitterHomePage = $('a.u-textUserColor', '.ProfileHeaderCard').text();
-                console.log(twiterHomePage);
+                console.log("Twitter Home Page", twitterHomePage);
                 product.twitter.followers = twitterNumFollowers;
                 product.description = twitterBio;
                 product.logo = twitterLogo;
@@ -150,8 +150,8 @@ var getBootcamps = function(urls) {
     var scrapeYelp = function() {
         var yelpURL = urls.yelp;
         return axios.get(yelpURL)
-            .then(function(res) {
-                var $ = cheerio.load(res.data);
+            .then(function(data) {
+                var $ = cheerio.load(data);
                 var yelpNumReviews = $("span[itemprop='reviewCount']").text();
                 console.log(yelpNumReviews);
                 reviewScore += yelpNumReviews;
@@ -168,9 +168,6 @@ var getBootcamps = function(urls) {
             product.avgRating = ratingScore / 3;
             product.totalSocial = socialScore;
             return Product.create(product);
-        })
-        .then(function(product) {
-            res.json(product);
         });
 };
 
