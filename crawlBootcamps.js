@@ -92,9 +92,10 @@ var getBootcamps = function(urls) {
             .then(function(data) {
                 var $ = cheerio.load(data);
                 var angelListNumFollowers = $('.tabs span').eq(2).children().children().text();
-                console.log(angelListNumFollowers);
-                product.angelList.followers = angelListNumFollowers;
-                socialScore += angelListNumFollowers;
+                console.log("AngelList Num Followers", Number(angelListNumFollowers));
+                product.angelList.followers = Number(angelListNumFollowers);
+                socialScore += Number(angelListNumFollowers);
+                //console.log(data);
             });
     };
     // scraping Course Report
@@ -106,9 +107,10 @@ var getBootcamps = function(urls) {
                 var $ = cheerio.load(data);
                 var numStringReviews = $('#reviews_tab').children().text();
                 var courseReportNumReviews = numStringReviews.replace(/^\D+/g, '');
-                reviewScore += courseReportNumReviews;
-                console.log(courseReportNumReviews);
-                product.courseReport.num = courseReportNumReviews;
+                reviewScore += Number(courseReportNumReviews);
+                console.log("Course Report Num Reviews",courseReportNumReviews);
+                product.courseReport.num = Number(courseReportNumReviews);
+                //console.log(data);
             });
     };
     // scraping LinkedIn
@@ -119,9 +121,10 @@ var getBootcamps = function(urls) {
             .then(function(data) {
                 var $ = cheerio.load(data);
                 var linkedInNumFollowers = $('.followers-count-num').text();
-                socialScore += linkedInNumFollowers;
-                console.log(linkedInNumFollowers);
-                product.linkedin.followers = linkedInNumFollowers;
+                socialScore += Number(linkedInNumFollowers);
+                console.log("LinkedIn Num Followers", Number(linkedInNumFollowers));
+                product.linkedin.followers = Number(linkedInNumFollowers);
+                //console.log(data);
             });
     };
     // scraping Quora
@@ -133,20 +136,21 @@ var getBootcamps = function(urls) {
             .then(function(data) {
                 var $ = cheerio.load(data);
                 var quoraNumFollowers = $('span.count', '.primary_item').text();
-                console.log(quoraNumFollowers);
+                console.log("Quora Num Followers", Number(quoraNumFollowers));
                 // adding to social score
-                socialScore += quoraNumFollowers;
+                socialScore += Number(quoraNumFollowers);
                 var quoraNumReviews = $('span.hidden', '.TopicReviewRatingLabel').find('span.count').find('span.value-title').attr('title');
-                console.log(quoraNumReviews);
+                console.log("Quora Num Reviews", Number(quoraNumReviews));
                 // adding to review score
-                reviewScore += quoraNumReviews;
+                reviewScore += Number(quoraNumReviews);
                 var quoraAvgRating = $('span.review_rating').children().length;
-                console.log(quoraAvgRating);
+                console.log("Quora Avg Rating", Number(quoraAvgRating));
                 // adding to rating score
-                ratingScore += quoraAvgRating;
-                product.quora.num = quoraNumReviews;
-                product.quora.avg = quoraAvgRating;
-                product.quora.followers = quoraNumFollowers;
+                ratingScore += Number(quoraAvgRating);
+                //product.quora.num = Number(quoraNumReviews);
+                product.quora.avg = Number(quoraAvgRating);
+                product.quora.followers = Number(quoraNumFollowers);
+                //console.log(data);
             });
     };
     // scraping switchup
@@ -158,13 +162,14 @@ var getBootcamps = function(urls) {
             .then(function(data) {
                 var $ = cheerio.load(data);
                 var switchupNumReviews = $("span[itemprop='reviewCount']").text();
-                console.log(switchupNumReviews);
-                reviewScore += switchupNumReviews;
+                console.log("Switchup Num Reviews", Number(switchupNumReviews));
+                reviewScore += Number(switchupNumReviews);
                 var switchupAvgRating = $("span[itemprop='ratingvalue']").text();
-                console.log(switchupAvgRating);
-                ratingScore += switchupAvgRating;
-                product.switchup.num = switchupNumReviews;
-                product.switchup.avg = switchupAvgRating;
+                console.log("Switchup Avg Rating", Number(switchupAvgRating));
+                ratingScore += Number(switchupAvgRating);
+                product.switchup.num = Number(switchupNumReviews);
+                product.switchup.avg = Number(switchupAvgRating);
+                //console.log(data);
             });
     };
     // scraping techendo
@@ -175,15 +180,16 @@ var getBootcamps = function(urls) {
             .then(function(data) {
                 var $ = cheerio.load(data);
                 var techendoPositiveReviews = $('div.rating span.positive-ratings-count').text();
-                console.log("Techendo + Reviews", techendoPositiveReviews);
+                console.log("Techendo + Reviews", Number(techendoPositiveReviews));
                 var techendoNegativeReviews = $('div.rating span.negative-ratings-count').text();
-                console.log("Techendo - Reviews", techendoNegativeReviews);
-                var techendoNumReviews = techendoPositiveReviews + techendoNegativeReviews;
-                reviewScore += techendoNumReviews;
-                console.log("Techendo Num Reviews", techendoNumReviews);
-                product.techendo.positive = techendoPositiveReviews;
-                product.techendo.negative = techendoNegativeReviews;
-                product.techendo.num = techendoNumReviews;
+                console.log("Techendo - Reviews", Number(techendoNegativeReviews));
+                var techendoNumReviews = Number(techendoPositiveReviews) + Number(techendoNegativeReviews);
+                reviewScore += Number(techendoNumReviews);
+                console.log("Techendo Num Reviews", Number(techendoNumReviews));
+                product.techendo.positive = Number(techendoPositiveReviews);
+                product.techendo.negative = Number(techendoNegativeReviews);
+                product.techendo.num = Number(techendoNumReviews);
+                //console.log(data);
             });
     };
     // scraping twitter
@@ -196,18 +202,19 @@ var getBootcamps = function(urls) {
                 var numStringFollowers = $(".ProfileNav").children().children().eq(2).children().children("span").text();
                 // this comes out as Followers12445
                 var twitterNumFollowers = numStringFollowers.replace(/^\D+/g, '');
-                console.log("Twitter Num Followers", twitterNumFollowers);
-                socialScore += twitterNumFollowers;
+                console.log("Twitter Num Followers", Number(twitterNumFollowers));
+                socialScore += Number(twitterNumFollowers);
                 var twitterLogo = $('.ProfileAvatar-image').attr('src');
                 console.log("Twitter Logo", twitterLogo);
                 var twitterBio = $('.ProfileHeaderCard-bio').text();
                 console.log("Twitter Bio", twitterBio);
                 var twitterHomePage = $('a.u-textUserColor', '.ProfileHeaderCard').text();
                 console.log("Twitter Home Page", twitterHomePage);
-                product.twitter.followers = twitterNumFollowers;
+                product.twitter.followers = Number(twitterNumFollowers);
                 product.description = twitterBio;
                 product.logo = twitterLogo;
                 product.homePage = twitterHomePage;
+                //console.log(data);
             });
     };
     // scraping yelp
@@ -219,12 +226,13 @@ var getBootcamps = function(urls) {
             .then(function(data) {
                 var $ = cheerio.load(data);
                 var yelpNumReviews = $("span[itemprop='reviewCount']").text();
-                console.log(yelpNumReviews);
-                reviewScore += yelpNumReviews;
+                console.log("Yelp Num Reviews", Number(yelpNumReviews));
+                reviewScore += Number(yelpNumReviews);
                 var floatAvgRating = $("meta[itemprop='ratingValue']").attr('content');
-                var yelpAvgRating = floatAvgRating | 0;
-                console.log(yelpAvgRating);
-                ratingScore += yelpAvgRating;
+                var yelpAvgRating = Number(floatAvgRating) | 0;
+                console.log("Yelp Avg Rating", Number(yelpAvgRating));
+                ratingScore += Number(yelpAvgRating);
+                //console.log(data);
             });
     };
     Promise.all([scrapeAngelList(), scrapeCourseReport(), scrapeLinkedIn(), scrapeQuora(), scrapeSwitchup(), scrapeTechendo(), scrapeTwitter(), scrapeYelp()])
@@ -233,6 +241,7 @@ var getBootcamps = function(urls) {
             product.totalReviews = reviewScore;
             product.avgRating = ratingScore / 3;
             product.totalSocial = socialScore;
+            console.log(product);
             return Product.create(product);
         });
 };
