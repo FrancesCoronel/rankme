@@ -21,30 +21,91 @@ var urls = [{
 }];
 
 var getBootcamps = function(urls) {
-    var product = {};
+    var product = {
+        title: "",
+        description: "",
+        logo: "",
+        homePage: "",
+        totalReviews: "",
+        avgRating: "",
+        totalSocial: "",
+        angelList: {
+            url: "",
+            followers: ""
+        },
+        courseReport: {
+            url: "",
+            num: "",
+            avg: ""
+        },
+        facebook: {
+            url: "",
+            num: "",
+            avg: "",
+            likes: ""
+        },
+        googlePlus: {
+            url: "",
+            num: "",
+            avg: "",
+            followers: ""
+        },
+        linkedin: {
+            url: "",
+            followers: ""
+        },
+        quora: {
+            url: "",
+            num: "",
+            avg: "",
+            followers: ""
+        },
+        switchup: {
+            url: "",
+            num: "",
+            avg: "",
+        },
+        techendo: {
+            url: "",
+            num: "",
+            positive: "",
+            negative: ""
+        },
+        twitter: {
+            url: "",
+            followers: ""
+        },
+        yelp: {
+            url: "",
+            num: "",
+            avg: ""
+        }
+    };
     var socialScore = 0;
     var reviewScore = 0;
     var ratingScore = 0;
     // scraping AngelList
     var scrapeAngelList = function() {
         var angelListURL = urls.angelList;
+        product.angelList.url = angelListURL;
         return axios.get(angelListURL)
             .then(function(data) {
                 var $ = cheerio.load(data);
                 var angelListNumFollowers = $('.tabs span').eq(2).children().children().text();
-                console.log(angelListNumFollowersnumFollowers);
-                product.angellist.followers = angelListNumFollowers;
+                console.log(angelListNumFollowers);
+                product.angelList.followers = angelListNumFollowers;
                 socialScore += angelListNumFollowers;
             });
     };
     // scraping Course Report
     var scrapeCourseReport = function() {
         var courseReportURL = urls.courseReport;
+        product.courseReport.url = courseReportURL;
         return axios.get(courseReportURL)
             .then(function(data) {
                 var $ = cheerio.load(data);
                 var numStringReviews = $('#reviews_tab').children().text();
-                var courseReportNumReviews = numStringReviews.replace( /^\D+/g, '');
+                var courseReportNumReviews = numStringReviews.replace(/^\D+/g, '');
                 reviewScore += courseReportNumReviews;
                 console.log(courseReportNumReviews);
                 product.courseReport.num = courseReportNumReviews;
@@ -53,6 +114,7 @@ var getBootcamps = function(urls) {
     // scraping LinkedIn
     var scrapeLinkedIn = function() {
         var linkedInURL = urls.linkedin;
+        product.linkedin.url = linkedInURL;
         return axios.get(linkedInURL)
             .then(function(data) {
                 var $ = cheerio.load(data);
@@ -66,6 +128,7 @@ var getBootcamps = function(urls) {
     // adding on to rating
     var scrapeQuora = function() {
         var quoraURL = urls.quora;
+        product.quora.url = quoraURL;
         return axios.get(quoraURL)
             .then(function(data) {
                 var $ = cheerio.load(data);
@@ -83,13 +146,14 @@ var getBootcamps = function(urls) {
                 ratingScore += quoraAvgRating;
                 product.quora.num = quoraNumReviews;
                 product.quora.avg = quoraAvgRating;
-                produc.quora.followers = quoraNumFollowers;
+                product.quora.followers = quoraNumFollowers;
             });
     };
     // scraping switchup
     // adding on to rating
     var scrapeSwitchup = function() {
         var switchupURL = urls.switchup;
+        product.switchup.url = switchupURL;
         return axios.get(switchupURL)
             .then(function(data) {
                 var $ = cheerio.load(data);
@@ -106,13 +170,14 @@ var getBootcamps = function(urls) {
     // scraping techendo
     var scrapeTechendo = function() {
         var techendoURL = urls.techendo;
+        product.techendo.url = techendoURL;
         return axios.get(techendoURL)
             .then(function(data) {
                 var $ = cheerio.load(data);
                 var techendoPositiveReviews = $('div.rating span.positive-ratings-count').text();
-                console.log("Techendo + Reviews",techendoPositiveReviews);
+                console.log("Techendo + Reviews", techendoPositiveReviews);
                 var techendoNegativeReviews = $('div.rating span.negative-ratings-count').text();
-                console.log("Techendo - Reviews",techendoNegativeReviews);
+                console.log("Techendo - Reviews", techendoNegativeReviews);
                 var techendoNumReviews = techendoPositiveReviews + techendoNegativeReviews;
                 reviewScore += techendoNumReviews;
                 console.log("Techendo Num Reviews", techendoNumReviews);
@@ -123,14 +188,15 @@ var getBootcamps = function(urls) {
     };
     // scraping twitter
     var scrapeTwitter = function() {
-        var twitterURL = urls.techendo;
+        var twitterURL = urls.twitter;
+        product.twitter.url = twitterURL;
         return axios.get(twitterURL)
             .then(function(data) {
                 var $ = cheerio.load(data);
                 var numStringFollowers = $(".ProfileNav").children().children().eq(2).children().children("span").text();
                 // this comes out as Followers12445
-                var twitterNumFollowers = numStringFollowers.replace( /^\D+/g, '');
-                console.log("Twitter Num Followers",twitterNumFollowers);
+                var twitterNumFollowers = numStringFollowers.replace(/^\D+/g, '');
+                console.log("Twitter Num Followers", twitterNumFollowers);
                 socialScore += twitterNumFollowers;
                 var twitterLogo = $('.ProfileAvatar-image').attr('src');
                 console.log("Twitter Logo", twitterLogo);
@@ -148,6 +214,7 @@ var getBootcamps = function(urls) {
     // adding on to rating
     var scrapeYelp = function() {
         var yelpURL = urls.yelp;
+        product.yelp.url = yelpURL;
         return axios.get(yelpURL)
             .then(function(data) {
                 var $ = cheerio.load(data);

@@ -15,7 +15,8 @@
     border: transparent;
 }
 
-.btn-primary.focus, .btn-primary:focus {
+.btn-primary.focus,
+.btn-primary:focus {
     background-color: #4f88d8;
 }
 
@@ -38,4 +39,14 @@ button.btn.btn-lg.btn-primary.btn-block {
 
 .btn-social.btn-lg {
     text-align: center;
+}
+
+.btn-twitter:hover,
+.btn-twitter:focus,
+.btn-twitter:active,
+.btn-twitter.active,
+.open>.dropdown-toggle.btn-twitter {
+    color: white;
+    background-color: #9ac1f6;
+    border-color: #5898f1;
 }
