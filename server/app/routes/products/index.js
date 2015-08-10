@@ -48,14 +48,18 @@ router.post("/", function(req, res) {
 
 // get single product
 router.get("/:productId", function(req, res) {
+    res.json(req.product);
+});
+
+// get single product
+router.post("/:productId", function(req, res) {
     Product.create(req.body)
-        .then(function(game) {
+        .then(function(product) {
             console.log("new product created");
-            res.json(req.product);
+            res.json(201, product);
         })
         .then(null, function(err) {
             console.log(err);
-            next(err);
         });
 });
 
