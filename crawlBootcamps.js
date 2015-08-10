@@ -4,6 +4,7 @@ var Promise = require('bluebird');
 var chalk = require('chalk');
 var connectToDb = require('./server/db');
 var Product = Promise.promisifyAll(mongoose.model('Product'));
+var numeral = require('numeral');
 var axios = require("axios");
 var request = require('request');
 var cheerio = require('cheerio');
@@ -35,20 +36,7 @@ var getBootcamps = function(urls) {
         },
         courseReport: {
             url: "",
-            num: "",
-            avg: ""
-        },
-        facebook: {
-            url: "",
-            num: "",
-            avg: "",
-            likes: ""
-        },
-        googlePlus: {
-            url: "",
-            num: "",
-            avg: "",
-            followers: ""
+            num: ""
         },
         linkedin: {
             url: "",
@@ -89,13 +77,15 @@ var getBootcamps = function(urls) {
         var angelListURL = urls.angelList;
         product.angelList.url = angelListURL;
         return axios.get(angelListURL)
-            .then(function(data) {
-                var $ = cheerio.load(data);
-                var angelListNumFollowers = $('.tabs span').eq(2).children().children().text();
-                console.log("AngelList Num Followers", Number(angelListNumFollowers));
-                product.angelList.followers = Number(angelListNumFollowers);
-                socialScore += Number(angelListNumFollowers);
-                //console.log(data);
+            .then(function(res) {
+                var $ = cheerio.load(res.data);
+                var angelListStringFollowers = $('.tabs span').eq(2).children().children().text();
+                console.log('AngelListString Followers', angelListStringFollowers);
+                var angelListNumFollowers = numeral().unformat($('.tabs span').eq(2).children().children().text());
+                console.log("AngelList Num Followers", angelListNumFollowers);
+                product.angelList.followers = angelListNumFollowers;
+                socialScore += angelListNumFollowers;
+                //console.log(res.data);
             });
     };
     // scraping Course Report
@@ -103,14 +93,13 @@ var getBootcamps = function(urls) {
         var courseReportURL = urls.courseReport;
         product.courseReport.url = courseReportURL;
         return axios.get(courseReportURL)
-            .then(function(data) {
-                var $ = cheerio.load(data);
-                var numStringReviews = $('#reviews_tab').children().text();
-                var courseReportNumReviews = numStringReviews.replace(/^\D+/g, '');
+            .then(function(res) {
+                var $ = cheerio.load(res.data);
+                var courseReportNumReviews = $('div.review').length;
                 reviewScore += Number(courseReportNumReviews);
-                console.log("Course Report Num Reviews",courseReportNumReviews);
+                console.log("Course Report Num Reviews", courseReportNumReviews);
                 product.courseReport.num = Number(courseReportNumReviews);
-                //console.log(data);
+                //console.log(res.data);
             });
     };
     // scraping LinkedIn
@@ -118,13 +107,15 @@ var getBootcamps = function(urls) {
         var linkedInURL = urls.linkedin;
         product.linkedin.url = linkedInURL;
         return axios.get(linkedInURL)
-            .then(function(data) {
-                var $ = cheerio.load(data);
-                var linkedInNumFollowers = $('.followers-count-num').text();
-                socialScore += Number(linkedInNumFollowers);
+            .then(function(res) {
+                var $ = cheerio.load(res.data);
+                var linkedInString = ($("p.followers-count").text()).replace(/(\r\n|\n|\r)/gm, "").replace(/\s+/g, " ");
+                var linkedInNumFollowers = linkedInString.match(/\d/g);
+                linkedInNumFollowers = linkedInNumFollowers.join("");
                 console.log("LinkedIn Num Followers", Number(linkedInNumFollowers));
+                socialScore += Number(linkedInNumFollowers);
                 product.linkedin.followers = Number(linkedInNumFollowers);
-                //console.log(data);
+                //console.log(res.data);
             });
     };
     // scraping Quora
@@ -133,24 +124,24 @@ var getBootcamps = function(urls) {
         var quoraURL = urls.quora;
         product.quora.url = quoraURL;
         return axios.get(quoraURL)
-            .then(function(data) {
-                var $ = cheerio.load(data);
-                var quoraNumFollowers = $('span.count', '.primary_item').text();
-                console.log("Quora Num Followers", Number(quoraNumFollowers));
+            .then(function(res) {
+                var $ = cheerio.load(res.data);
+                var quoraNumFollowers = numeral().unformat($('span.count', '.primary_item').text());
+                console.log("Quora Num Followers", quoraNumFollowers);
                 // adding to social score
-                socialScore += Number(quoraNumFollowers);
-                var quoraNumReviews = $('span.hidden', '.TopicReviewRatingLabel').find('span.count').find('span.value-title').attr('title');
-                console.log("Quora Num Reviews", Number(quoraNumReviews));
+                socialScore += quoraNumFollowers;
+                var quoraNumReviews = numeral().unformat($('span.hidden', '.TopicReviewRatingLabel').find('span.count').find('span.value-title').attr('title'));
+                console.log("Quora Num Reviews",quoraNumReviews);
                 // adding to review score
-                reviewScore += Number(quoraNumReviews);
-                var quoraAvgRating = $('span.review_rating').children().length;
-                console.log("Quora Avg Rating", Number(quoraAvgRating));
+                reviewScore += quoraNumReviews;
+                var quoraAvgRating = numeral().unformat($('span.review_rating').children().length);
+                console.log("Quora Avg Rating", quoraAvgRating);
                 // adding to rating score
-                ratingScore += Number(quoraAvgRating);
-                //product.quora.num = Number(quoraNumReviews);
-                product.quora.avg = Number(quoraAvgRating);
-                product.quora.followers = Number(quoraNumFollowers);
-                //console.log(data);
+                ratingScore += quoraAvgRating;
+                product.quora.num = quoraNumReviews;
+                product.quora.avg = quoraAvgRating;
+                product.quora.followers = quoraNumFollowers;
+                //console.log(res.data);
             });
     };
     // scraping switchup
@@ -159,17 +150,17 @@ var getBootcamps = function(urls) {
         var switchupURL = urls.switchup;
         product.switchup.url = switchupURL;
         return axios.get(switchupURL)
-            .then(function(data) {
-                var $ = cheerio.load(data);
-                var switchupNumReviews = $("span[itemprop='reviewCount']").text();
-                console.log("Switchup Num Reviews", Number(switchupNumReviews));
-                reviewScore += Number(switchupNumReviews);
-                var switchupAvgRating = $("span[itemprop='ratingvalue']").text();
-                console.log("Switchup Avg Rating", Number(switchupAvgRating));
-                ratingScore += Number(switchupAvgRating);
-                product.switchup.num = Number(switchupNumReviews);
-                product.switchup.avg = Number(switchupAvgRating);
-                //console.log(data);
+            .then(function(res) {
+                var $ = cheerio.load(res.data);
+                var switchupNumReviews = numeral().unformat($("span[itemprop='reviewcount']").text());
+                console.log("Switchup Num Reviews", switchupNumReviews);
+                reviewScore += switchupNumReviews;
+                var switchupAvgRating = numeral().unformat($("span[itemprop='ratingvalue']").text());
+                console.log("Switchup Avg Rating", switchupAvgRating);
+                ratingScore += switchupAvgRating;
+                product.switchup.num = switchupNumReviews;
+                product.switchup.avg = switchupAvgRating;
+                //console.log(res.data);
             });
     };
     // scraping techendo
@@ -177,8 +168,8 @@ var getBootcamps = function(urls) {
         var techendoURL = urls.techendo;
         product.techendo.url = techendoURL;
         return axios.get(techendoURL)
-            .then(function(data) {
-                var $ = cheerio.load(data);
+            .then(function(res) {
+                var $ = cheerio.load(res.data);
                 var techendoPositiveReviews = $('div.rating span.positive-ratings-count').text();
                 console.log("Techendo + Reviews", Number(techendoPositiveReviews));
                 var techendoNegativeReviews = $('div.rating span.negative-ratings-count').text();
@@ -189,7 +180,7 @@ var getBootcamps = function(urls) {
                 product.techendo.positive = Number(techendoPositiveReviews);
                 product.techendo.negative = Number(techendoNegativeReviews);
                 product.techendo.num = Number(techendoNumReviews);
-                //console.log(data);
+                //console.log(res.data);
             });
     };
     // scraping twitter
@@ -197,24 +188,25 @@ var getBootcamps = function(urls) {
         var twitterURL = urls.twitter;
         product.twitter.url = twitterURL;
         return axios.get(twitterURL)
-            .then(function(data) {
-                var $ = cheerio.load(data);
+            .then(function(res) {
+                var $ = cheerio.load(res.data);
                 var numStringFollowers = $(".ProfileNav").children().children().eq(2).children().children("span").text();
                 // this comes out as Followers12445
-                var twitterNumFollowers = numStringFollowers.replace(/^\D+/g, '');
+                var twitterNumFollowers = numeral().unformat(numStringFollowers);
                 console.log("Twitter Num Followers", Number(twitterNumFollowers));
                 socialScore += Number(twitterNumFollowers);
                 var twitterLogo = $('.ProfileAvatar-image').attr('src');
                 console.log("Twitter Logo", twitterLogo);
                 var twitterBio = $('.ProfileHeaderCard-bio').text();
                 console.log("Twitter Bio", twitterBio);
-                var twitterHomePage = $('a.u-textUserColor', '.ProfileHeaderCard').text();
+                var twitterStringHomePage = $('a.u-textUserColor', '.ProfileHeaderCard').text();
+                var twitterHomePage = twitterStringHomePage.replace(/(\r\n|\n|\r)/gm, "").replace(/\s+/g, " ");
                 console.log("Twitter Home Page", twitterHomePage);
                 product.twitter.followers = Number(twitterNumFollowers);
                 product.description = twitterBio;
                 product.logo = twitterLogo;
                 product.homePage = twitterHomePage;
-                //console.log(data);
+                //console.log(res.data);
             });
     };
     // scraping yelp
@@ -223,23 +215,25 @@ var getBootcamps = function(urls) {
         var yelpURL = urls.yelp;
         product.yelp.url = yelpURL;
         return axios.get(yelpURL)
-            .then(function(data) {
-                var $ = cheerio.load(data);
-                var yelpNumReviews = $("span[itemprop='reviewCount']").text();
-                console.log("Yelp Num Reviews", Number(yelpNumReviews));
-                reviewScore += Number(yelpNumReviews);
+            .then(function(res) {
+                var $ = cheerio.load(res.data);
+                var yelpNumReviews = numeral().unformat($("span[itemprop='reviewCount']").text());
+                console.log("Yelp Num Reviews",yelpNumReviews);
+                reviewScore += yelpNumReviews;
                 var floatAvgRating = $("meta[itemprop='ratingValue']").attr('content');
-                var yelpAvgRating = Number(floatAvgRating) | 0;
-                console.log("Yelp Avg Rating", Number(yelpAvgRating));
-                ratingScore += Number(yelpAvgRating);
-                //console.log(data);
+                var yelpAvgRating = Number(parseInt(floatAvgRating));
+                console.log("Yelp Avg Rating", yelpAvgRating);
+                ratingScore += yelpAvgRating;
+                product.yelp.num = yelpNumReviews;
+                product.yelp.avg = yelpAvgRating;
+                //console.log(res.data);
             });
     };
     Promise.all([scrapeAngelList(), scrapeCourseReport(), scrapeLinkedIn(), scrapeQuora(), scrapeSwitchup(), scrapeTechendo(), scrapeTwitter(), scrapeYelp()])
         .then(function() {
             product.title = urls.title;
             product.totalReviews = reviewScore;
-            product.avgRating = ratingScore / 3;
+            product.avgRating = parseInt(ratingScore / 3);
             product.totalSocial = socialScore;
             console.log(product);
             return Product.create(product);
