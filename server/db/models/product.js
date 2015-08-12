@@ -21,20 +21,24 @@ var schema = new mongoose.Schema({
         type: String
     },
     totalReviews: {
-        type: Number
+        type: Number,
+        default: 0
     },
     avgRating: {
-        type: Number
+        type: Number,
+        default: 0
     },
     totalSocial: {
-        type: Number
+        type: Number,
+        default: 0
     },
     angelList: {
         url: {
             type: String
         },
         followers: {
-            type: Number
+            type: Number,
+            default: 0
         }
     },
     courseReport: {
@@ -42,10 +46,12 @@ var schema = new mongoose.Schema({
             type: String
         },
         num: {
-            type: Number
+            type: Number,
+            default: 0
         },
         avg: {
-            type: Number
+            type: Number,
+            default: 0
         }
     },
     facebook: {
@@ -53,13 +59,16 @@ var schema = new mongoose.Schema({
             type: String
         },
         num: {
-            type: Number
+            type: Number,
+            default: 0
         },
         avg: {
-            type: Number
+            type: Number,
+            default: 0
         },
         likes: {
-            type: Number
+            type: Number,
+            default: 0
         }
     },
     googlePlus: {
@@ -67,13 +76,16 @@ var schema = new mongoose.Schema({
             type: String
         },
         num: {
-            type: Number
+            type: Number,
+            default: 0
         },
         avg: {
-            type: Number
+            type: Number,
+            default: 0
         },
         followers: {
-            type: Number
+            type: Number,
+            default: 0
         }
     },
     linkedin: {
@@ -81,7 +93,8 @@ var schema = new mongoose.Schema({
             type: String
         },
         followers: {
-            type: Number
+            type: Number,
+            default: 0
         }
     },
     quora: {
@@ -89,13 +102,16 @@ var schema = new mongoose.Schema({
             type: String
         },
         num: {
-            type: Number
+            type: Number,
+            default: 0
         },
         avg: {
-            type: Number
+            type: Number,
+            default: 0
         },
         followers: {
-            type: Number
+            type: Number,
+            default: 0
         }
     },
     switchup: {
@@ -103,10 +119,12 @@ var schema = new mongoose.Schema({
             type: String
         },
         num: {
-            type: Number
+            type: Number,
+            default: 0
         },
         avg: {
-            type: Number
+            type: Number,
+            default: 0
         },
     },
     techendo: {
@@ -114,13 +132,16 @@ var schema = new mongoose.Schema({
             type: String
         },
         num: {
-            type: Number
+            type: Number,
+            default: 0
         },
         positive: {
-            type: Number
+            type: Number,
+            default: 0
         },
         negative: {
-            type: Number
+            type: Number,
+            default: 0
         }
     },
     twitter: {
@@ -128,7 +149,8 @@ var schema = new mongoose.Schema({
             type: String
         },
         followers: {
-            type: Number
+            type: Number,
+            default: 0
         }
     },
     yelp: {
@@ -136,10 +158,12 @@ var schema = new mongoose.Schema({
             type: String
         },
         num: {
-            type: Number
+            type: Number,
+            default: 0
         },
         avg: {
-            type: Number
+            type: Number,
+            default: 0
         }
     }
 });

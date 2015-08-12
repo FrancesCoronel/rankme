@@ -9,16 +9,48 @@ var axios = require("axios");
 var request = require('request');
 var cheerio = require('cheerio');
 
+// yelp needs to be http:// not https://
+
+// var urls = [{
+//     title: "Wyncode",
+//     courseReport: "https://www.coursereport.com/schools/wyncode",
+//     linkedin: "https://www.linkedin.com/company/wyncode",
+//     quora: "https://www.quora.com/Wyncode",
+//     switchup: "https://www.switchup.org/bootcamps/wyncode",
+//     techendo: "https://schools.techendo.com/schools/ait-learning",
+//     twitter: "https://twitter.com/wyncode",
+//     yelp: "http://www.yelp.com/biz/wyncode-academy-miami"
+// }, {
+//     title: "Tradecraft",
+//     courseReport: "https://www.coursereport.com/schools/tradecraft",
+//     linkedin: "https://www.linkedin.com/company/tradecraft",
+//     quora: "https://www.quora.com/Tradecrafted",
+//     switchup: "https://www.switchup.org/bootcamps/tradecraft",
+//     techendo: "https://schools.techendo.com/schools/ait-learning",
+//     twitter: "https://twitter.com/Tradecraft",
+//     yelp: "http://www.yelp.com/biz/tradecraft-san-francisco"
+// }, {
+//     title: "Flatiron",
+//     courseReport: "https://www.coursereport.com/schools/flatiron-school",
+//     linkedin: "https://www.linkedin.com/company/the-flatiron-school",
+//     quora: "https://www.quora.com/Flatiron-School",
+//     switchup: "https://www.switchup.org/bootcamps/the-flatiron-school",
+//     techendo: "https://schools.techendo.com/schools/flatiron-school",
+//     twitter: "https://twitter.com/flatironschool",
+//     yelp: "http://www.yelp.com/biz/the-flatiron-school-new-york"
+// }];
+
+// hack reactor
+
 var urls = [{
-    title: "Dev Bootcamp",
-    angelList: "https://angel.co/devbootcamp",
-    courseReport: "https://www.coursereport.com/schools/dev-bootcamp",
-    linkedin: "https://www.linkedin.com/company/dev-bootcamp",
-    quora: "https://www.quora.com/Dev-Bootcamp",
-    switchup: "https://www.switchup.org/bootcamps/dev-bootcamp",
-    techendo: "https://schools.techendo.com/schools/dev-bootcamp",
-    twitter: "https://twitter.com/devbootcamp",
-    yelp: "http://www.yelp.com/biz/dev-bootcamp-san-francisco"
+    title: "Hack Reactor",
+    courseReport: "https://www.coursereport.com/schools/hack-reactor",
+    linkedin: "https://www.linkedin.com/company/hack-reactor",
+    quora: "https://www.quora.com/Hack-Reactor",
+    switchup: "https://www.switchup.org/bootcamps/hack-reactor",
+    techendo: "https://schools.techendo.com/schools/hack-reactor",
+    twitter: "https://twitter.com/hackreactor",
+    yelp: "http://www.yelp.com/biz/hack-reactor-san-francisco"
 }];
 
 var getBootcamps = function(urls) {
@@ -32,7 +64,7 @@ var getBootcamps = function(urls) {
         totalSocial: "",
         angelList: {
             url: "",
-            followers: ""
+            num: ""
         },
         courseReport: {
             url: "",
@@ -73,21 +105,21 @@ var getBootcamps = function(urls) {
     var reviewScore = 0;
     var ratingScore = 0;
     // scraping AngelList
-    var scrapeAngelList = function() {
-        var angelListURL = urls.angelList;
-        product.angelList.url = angelListURL;
-        return axios.get(angelListURL)
-            .then(function(res) {
-                var $ = cheerio.load(res.data);
-                var angelListStringFollowers = $('.tabs span').eq(2).children().children().text();
-                console.log('AngelListString Followers', angelListStringFollowers);
-                var angelListNumFollowers = numeral().unformat($('.tabs span').eq(2).children().children().text());
-                console.log("AngelList Num Followers", angelListNumFollowers);
-                product.angelList.followers = angelListNumFollowers;
-                socialScore += angelListNumFollowers;
-                //console.log(res.data);
-            });
-    };
+    // var scrapeAngelList = function() {
+    //     var angelListURL = urls.angelList;
+    //     product.angelList.url = angelListURL;
+    //     return axios.get(angelListURL)
+    //         .then(function(res) {
+    //             var $ = cheerio.load(res.data);
+    //             var angelListStringFollowers = $('.tabs span').eq(2).children().children().text();
+    //             console.log('AngelListString Followers', angelListStringFollowers);
+    //             var angelListNumFollowers = numeral().unformat($('.tabs span').eq(2).children().children().text());
+    //             console.log("AngelList Num Followers", angelListNumFollowers);
+    //             product.angelList.followers = angelListNumFollowers;
+    //             socialScore += angelListNumFollowers;
+    //             //console.log(res.data);
+    //         });
+    // };
     // scraping Course Report
     var scrapeCourseReport = function() {
         var courseReportURL = urls.courseReport;
@@ -131,7 +163,7 @@ var getBootcamps = function(urls) {
                 // adding to social score
                 socialScore += quoraNumFollowers;
                 var quoraNumReviews = numeral().unformat($('span.hidden', '.TopicReviewRatingLabel').find('span.count').find('span.value-title').attr('title'));
-                console.log("Quora Num Reviews",quoraNumReviews);
+                console.log("Quora Num Reviews", quoraNumReviews);
                 // adding to review score
                 reviewScore += quoraNumReviews;
                 var quoraAvgRating = numeral().unformat($('span.review_rating').children().length);
@@ -218,7 +250,7 @@ var getBootcamps = function(urls) {
             .then(function(res) {
                 var $ = cheerio.load(res.data);
                 var yelpNumReviews = numeral().unformat($("span[itemprop='reviewCount']").text());
-                console.log("Yelp Num Reviews",yelpNumReviews);
+                console.log("Yelp Num Reviews", yelpNumReviews);
                 reviewScore += yelpNumReviews;
                 var floatAvgRating = $("meta[itemprop='ratingValue']").attr('content');
                 var yelpAvgRating = Number(parseInt(floatAvgRating));
@@ -229,7 +261,7 @@ var getBootcamps = function(urls) {
                 //console.log(res.data);
             });
     };
-    Promise.all([scrapeAngelList(), scrapeCourseReport(), scrapeLinkedIn(), scrapeQuora(), scrapeSwitchup(), scrapeTechendo(), scrapeTwitter(), scrapeYelp()])
+    Promise.all([scrapeCourseReport(), scrapeLinkedIn(), scrapeQuora(), scrapeSwitchup(), scrapeTechendo(), scrapeTwitter(), scrapeYelp()])
         .then(function() {
             product.title = urls.title;
             product.totalReviews = reviewScore;

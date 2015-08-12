@@ -4,7 +4,7 @@
         <div class="mdl-card__title mdl-card--expand"></div>
         <div class="mdl-card__supporting-text">
             <div class="row valign-middle">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{theProduct.homePage}}" target="_blank">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="http://{{theProduct.homePage}}" target="_blank">
                     <h2 class="mdl-card__title-text">{{theProduct.title}}</h2>
                 </a>
             </div>
@@ -26,7 +26,7 @@
             </div>
             <br>
             <div class="row valign-middle">
-                <a href="{{theProduct.homePage}}" target="_blank"><p>{{theProduct.homePage}}</p></a>
+                <a href="http://{{theProduct.homePage}}" target="_blank"><p>{{theProduct.homePage}}</p></a>
             </div>
         </div>
         <div class="mdl-card__actions mdl-card--border">
@@ -41,16 +41,14 @@
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <div class="row">
-                        <p><b>{{theProduct.angelList.followers}}</b> followers</p>
+                        <p ng-show="{{theProduct.angelList.followers}} !== 0"><b>{{theProduct.angelList.followers}}</b> followers</p>
+                        <p ng-show="{{theProduct.angelList.followers}} === 0">N/A</p>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <a href="{{theProduct.courseReport.url}}" target="_blank"><img src="images/coursereport.png" class="img-responsive"></a>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
-                    <div class="row">
-                        <p><b>{{theProduct.courseReport.avg}}</b> out of 5</p>
-                    </div>
                     <div class="row">
                         <p><b>{{theProduct.courseReport.num}}</b> reviews</p>
                     </div>
@@ -63,13 +61,16 @@
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <div class="row">
-                        <p><b>{{theProduct.facebook.avg}}</b> out of 5</p>
+                        <p ng-show="{{theProduct.facebook.avg}} !== 0"><b>{{theProduct.facebook.avg}}</b> out of 5</p>
+                        <p ng-show="{{theProduct.facebook.avg}} === 0">N/A</p>
                     </div>
                     <div class="row">
-                        <p><b>{{theProduct.facebook.num}}</b> reviews</p>
+                        <p ng-show="{{theProduct.facebook.num}} !== 0"><b>{{theProduct.facebook.num}}</b> reviews</p>
+                        <p ng-show="{{theProduct.facebook.num}} === 0">N/A</p>
                     </div>
                     <div class="row">
-                        <p><b>{{theProduct.facebook.likes}}</b> likes</p>
+                        <p ng-show="{{theProduct.facebook.likes}} !== 0"><b>{{theProduct.facebook.likes}}</b> likes</p>
+                        <p ng-show="{{theProduct.facebook.likes}} === 0">N/A</p>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
@@ -77,13 +78,16 @@
                 </div>
                 <div class="col-sm-12 col-md-3 col-lg-3 valign-middle columns">
                     <div class="row">
-                        <p><b>{{theProduct.googlePlus.avg}}</b> out of 5</p>
+                        <p ng-show="{{theProduct.googlePlus.avg}} !== 0"><b>{{theProduct.googlePlus.avg}}</b> out of 5</p>
+                        <p ng-show="{{theProduct.googlePlus.avg}} === 0">N/A</p>
                     </div>
                     <div class="row">
-                        <p><b>{{theProduct.googlePlus.num}}</b> reviews</p>
+                        <p ng-show="{{theProduct.googlePlus.num}} !== 0"><b>{{theProduct.googlePlus.num}}</b> out of 5</p>
+                        <p ng-show="{{theProduct.googlePlus.num}} === 0">N/A</p>
                     </div>
                     <div class="row">
-                        <p><b>{{theProduct.googlePlus.followers}}</b> reviews</p>
+                        <p ng-show="{{theProduct.googlePlus.followers}} !== 0"><b>{{theProduct.googlePlus.followers}}</b> out of 5</p>
+                        <p ng-show="{{theProduct.googlePlus.followers}} === 0">N/A</p>
                     </div>
                 </div>
             </div>

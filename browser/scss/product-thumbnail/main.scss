@@ -1,10 +1,5 @@
 .mdl-card__title {
     color: black;
-    background: url('{{theProduct.logo}}') center / cover;
-}
-
-.productCard {
-    min-height: 600px;
 }
 
 .detailsCard {
@@ -19,4 +14,8 @@
 
 .productCard > .mdl-card__title {
     color: black;
+}
+
+.mdl-card {
+  border: 2px solid rgba(0,0,0,.1);
 }

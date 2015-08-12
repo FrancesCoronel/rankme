@@ -16,6 +16,6 @@
     </div>
     <div class="row">
         <h4 class="nullMessage" ng-show="noContent">Sorry. We couldn't find any bootcamps for you!</h4>
-        <product-thumbnail ng-repeat="productEntry in products | orderBy:predicate:reverse" product="productEntry"></product-thumbnail>
     </div>
+    <product-thumbnail ng-repeat="productEntry in products | orderBy:predicate:reverse" product="productEntry"></product-thumbnail>
 </div>
