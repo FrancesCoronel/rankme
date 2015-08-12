@@ -4,7 +4,7 @@
 
 > We rank bootcamps.
 
-[![Built at Fullstack](https://img.shields.io/badge/Built%20at-Fullstack-red.svg?style=flat-square)](http://fullstackacademy.com)
+<a href="http://www.fullstackacademy.com" target="_blank">![Built at Fullstack](https://img.shields.io/badge/Built%20at-Fullstack-red.svg?style=flat-square)</a>
 
 ---
 
