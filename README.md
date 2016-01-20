@@ -2,9 +2,9 @@
 
 # Rank.me (**BETA**)
 
-> We rank bootcamps all over the world.
+> We rank bootcamps.
 
-![Built at Fullstack](https://img.shields.io/badge/Built%20at-Fullstack-red.svg?style=flat-square)
+<a href="http://www.fullstackacademy.com" target="_blank">![Built at Fullstack](https://img.shields.io/badge/Built%20at-Fullstack-red.svg?style=flat-square)</a>
 
 ---
 
