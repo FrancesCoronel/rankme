@@ -1,12 +1,10 @@
 <img src="https://fvcproductions.files.wordpress.com/2015/08/logo.png" width="200" align="middle">
 
-# Rank.me (**BETA**)
+# rankme
 
-> We rank bootcamps.
+[![Github Issues](http://githubbadges.herokuapp.com/fvcproductions/rankme/issues.svg?style=flat-square)](https://github.com/fvcproductions/rankme/issues) [![Pending Pull-Requests](http://githubbadges.herokuapp.com/fvcproductions/rankme/pulls.svg?style=flat-square)](https://github.com/fvcproductions/rankme/pulls) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) [![Built at Fullstack](https://img.shields.io/badge/Built%20at-Fullstack-red.svg?style=flat-square)](http://www.fullstackacademy.com)
 
-<a href="http://www.fullstackacademy.com" target="_blank">![Built at Fullstack](https://img.shields.io/badge/Built%20at-Fullstack-red.svg?style=flat-square)</a>
-
----
+We rank bootcamps.
 
 > Home Page
 
@@ -16,15 +14,19 @@
 
 <img align="middle" src="https://fvcproductions.files.wordpress.com/2015/08/rank-me-about.png">
 
----
+## Table of Contents
 
-# Domain
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Credits](#credits)
+- [Donations](#donations)
 
-- Reserved at <a href="http://rank-me.herokuapp.com" target="_blank">`http://rank-me.herokuapp.com`</a>. **NOT LIVE YET.**
+## Installation
 
----
+The domain is reserved at <a href="http://rank-me.herokuapp.com" target="_blank">`http://rank-me.herokuapp.com`</a>. **NOT LIVE YET.**
 
-# Usage
+## Usage
 
 - Logo, description, and home page link are grabbed from Twitter profile.
 - **Review and rating scores** are calculated from
@@ -63,9 +65,7 @@
     - [X] Twitter
         - followers
 
----
-
-# Future Features
+### Future Features
 
 - Users can add bootcamps.
 - Admins can add/update bootcamps.
@@ -78,20 +78,25 @@
 - Get links to other links from Course Report so less links are needed and scraping is faster.
 - Refactoring of code in general.
 
----
+## Contributing
 
-# Contributions
+> To get started...
 
-> Fork me, pull me, buy me, use me, break me, fix me, trash me, change me, mail - upgrade me, charge me, point me, zoom me, press me, snap me, work me, quick - erase me, write me, cut me, paste me, save me, load me, check me, quick - rewrite me, plug me, play me, burn me, rip me, drag and drop me, zip - unzip me, lock me, fill me, call me, find me, view me, code me, jam - unlock me, surf me, scroll me, pause me, click me, cross me, crack me, switch - update me, name me, rate me, tune me, print me, scan me, send me, fax - rename me, touch me, bring me, pay me, watch me, turn me, leave me, start - format me...
+- 🍴 Fork this repo [here](https://github.com/fvcproductions/rankme#fork-destination-box)
+- 🔨 Hack away
+- 😊 Add yourself as a contributor
+- 🔧 Make a pull request [here](https://github.com/fvcproductions/rankme/compare)
 
----
+> Or just create an issue - any little bit of help counts! 😊
 
-# Contact
+- 😯 Create an issue [here](https://github.com/fvcproductions/rankme/issues)!
 
-- Twitter <a href="http://twitter.com/fvcproductions" target="_blank">@fvcproductions</a>
+## Credits
 
----
+2017 © [FVCproductions](http://fvcproductions.com)
 
-> Built with ❤️ at [Fullstack Academy](http://fullstackacademy.com "Fullstack Academy").
->
-> Last updated August 13, 2015.
+## Donations
+
+> Feed me... 🍕
+
+[![Donate via PayPal](https://raw.github.com/xioTechnologies/PayPal-Button/master/PayPal%20Button.png)](http://paypal.me/fvcproductions)
