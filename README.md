@@ -93,7 +93,7 @@ The domain is reserved at <a href="http://rank-me.herokuapp.com" target="_blank"
 
 ## Credits
 
-2017 © [FVCproductions](http://fvcproductions.com)
+2015 © [FVCproductions](http://fvcproductions.com)
 
 ## Donations
 
